@@ -73,9 +73,13 @@ html, body {
 
   // This is the logo at the top of the ToC
   .logo {
-    display: block;
-    max-width: 100%;
     margin-bottom: $logo-margin;
+    margin-top: 32px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
   }
 
   &>.search {
@@ -612,4 +616,45 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+.item-label {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  padding: 2px 3px;
+  margin-right: 4px;
+  text-align: center;
+  border-radius: 2px;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 9px;
+  opacity: 0.8;
+  background-color: #999;
+  color: #fff;
+  user-select: none;
+}
+
+.item-label.get {
+  background-color: #0f6ab4;
+}
+
+.item-label.post {
+  background-color: #10a54a;
+}
+
+.item-label.delete {
+  background-color: #a41e22;
+}
+
+.item-label.put, .item-label.patch {
+  background-color: #10a54a;
+}
+
+table code {
+  color: #e96900;
+  padding: 3px 5px;
+  margin: 0 2px;
+  border-radius: 2px;
+  white-space: nowrap;
 }

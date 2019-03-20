@@ -77,7 +77,14 @@ under the License.
               <ul class="toc-list-h2">
                 <% h1[:children].each do |h2| %>
                   <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    <% if h2[:is_endpoint] %>
+                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
+                        <span class="item-label <%= h2[:method].downcase %>" style="top: -1px;width: 33px;"><%= h2[:method] %></span>
+                        <%= h2[:content_without_prefix] %>
+                      </a>
+                    <% else %>
+                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    <% end %>
                   </li>
                 <% end %>
               </ul>

@@ -1,239 +1,66 @@
 ---
-title: API Reference
+title: Referencia API - 4Geeks Payments
 
-language_tabs: # must be one of https://git.io/vQNgJ
+language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
+  # - ruby
+  # - python
+  # - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  #- <a href='https://dashboard.payments.4geeks.io' target='_blank'>Obtenga llaves de acceso.</a>
+  #- <a href='http://gpayments-support.readthedocs.io/en/latest/libreria.html' target='_blank'>Librerías cliente.</a>
+  #- <a href='https://4geeks.io' target='_blank'>4Geeks Technologies, Inc.</a>
 
 includes:
-  - errors
+  #- response_codes
+  - authentication
+  - account
+  - users
 
 search: true
 ---
 
-# Introduction
+# Basics
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+## Welcome
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Welcome to SmarterSelect Public API!
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+With SmarterSelect API, you can consume your `provider` data, such as users information and reset passwords for your users.
 
-# Authentication
+On the left you can see examples on how to consume our API and the response objects you will get.
 
-> To authorize, use this code:
+OK, let’s get started!
 
-```ruby
-require 'kittn'
+## Base URL
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+The base URL for all API requests is:
 
-```python
-import kittn
+`https://api.smarterselect.com/api/v1`
 
-api = kittn.authorize('meowmeowmeow')
-```
+## Versioning
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+The API version is included in the base URL of the request. The current version is `v1`.
 
-```javascript
-const kittn = require('kittn');
+## Requests
 
-let api = kittn.authorize('meowmeowmeow');
-```
+### Basic Concepts
 
-> Make sure to replace `meowmeowmeow` with your API key.
+The SmarterSelect API is organized around REST: users, apps, and other resources are accessed with URL endpoints and manipulated using HTTP GET, POST, and DELETE verbs. GET is used for reading resources, POST is used for creating and updating resources, and DELETE is used for deleting resources.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+In general, resources identifiers are specified in the URL. In cases where objects are being created or updated, additional parameters are sent in the request body.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+When reading, updating, or deleting existing resources, resource identifiers are specified in the URL.
 
-`Authorization: meowmeowmeow`
+### Headers
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+When making all requests, the authorization header must be set and include the API key in the token portion of the authorization header:
 
-# Kittens
+`Authorization: Bearer {token}`
 
-## Get All Kittens
+In addition, when making requests that create or update a resource, parameters are sent as JSON in the POST request and the content type header must be set to the JSON content type: `Content-Type: application/json`
 
-```ruby
-require 'kittn'
+### Cross Origin Sharing
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+The SmarterSelect API supports Cross Origin Resource Sharing (CORS), so you can make requests from any location.

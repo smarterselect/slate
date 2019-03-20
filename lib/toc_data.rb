@@ -6,11 +6,15 @@ def toc_data(page_content)
   # get a flat list of headers
   headers = []
   html_doc.css('h1, h2, h3').each do |header|
+    splited_title = header.children.to_s.split(' ')
     headers.push({
       id: header.attribute('id').to_s,
       content: header.children,
       title: header.children.to_s.gsub(/<[^>]*>/, ''),
       level: header.name[1].to_i,
+      method: splited_title.first,
+      is_endpoint: ["GET", "POST", "PUT", "PATCH", "DELETE"].include?(splited_title.first),
+      content_without_prefix: splited_title.drop(1).join(' '),
       children: []
     })
   end
