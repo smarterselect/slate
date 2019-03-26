@@ -64,10 +64,17 @@ Gets a list of all your user objects
 ### Path Arguments
 
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -201,13 +208,20 @@ Gets a list of all your applicant users objects
 
 `GET https://api.smarterselect.com/api/v1/providers/:account_id/admins`
 
-### Path Arguments
+### Arguments
 
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -355,13 +369,20 @@ Gets a list of all your applicant users objects
 
 `GET https://api.smarterselect.com/api/v1/providers/:account_id/applicants`
 
-### Path Arguments
+### Arguments
 
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -448,4 +469,80 @@ Gets a list of all your applicant users objects
 
 ## GET Evaluators
 
-## POST Reset Password
+## PUT Edit User Role
+
+> Example to promote/demote a user
+
+```shell
+curl --request PUT \
+  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role \
+  --header 'authorization: Bearer {token}' \
+  --header 'content-type: application/json' \
+  --data '{
+  	"old_role": 1,
+  	"new_role": 0
+  }'
+```
+
+> Response body
+
+```shell
+200 OK
+```
+
+### Description
+
+Promote or demote a user from your account list.
+
+### HTTP Request
+
+`GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role`
+
+### Arguments
+
+| Parameter | Location | Type | Description
+| --------- | -------- | ---- | -----------
+| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
+| :user_id <strong class="required">required</strong> | path parameter | integer | The user id is returned from any of the user lists.
+| old_role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
+| new_role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
+
+## POST Deactivate User
+
+> Example to deactivate a user
+
+```shell
+curl --request PUT \
+  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate \
+  --header 'authorization: Bearer {token}' \
+  --header 'content-type: application/json' \
+  --data '{
+  	"role": 1
+  }'
+```
+
+> Response body
+
+```shell
+200 OK
+```
+
+### Description
+
+Deactivate a user from your account list.
+
+### HTTP Request
+
+`GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate`
+
+### Arguments
+
+| Parameter | Location | Type | Description
+| --------- | -------- | ---- | -----------
+| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
+| :user_id <strong class="required">required</strong> | path parameter | integer | The user id is returned from any of the user lists.
+| role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
+
+<aside class="notice">
+  <code>Role</code> is required since a users can have multiple roles in your account.
+</aside>
