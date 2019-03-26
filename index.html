@@ -283,9 +283,15 @@
                       </a>
                   </li>
                   <li>
-                      <a href="#post-reset-password" class="toc-h2 toc-link" data-title="POST Reset Password">
+                      <a href="#put-edit-user-role" class="toc-h2 toc-link" data-title="PUT Edit User Role">
+                        <span class="item-label put" style="top: -1px;width: 33px;">PUT</span>
+                        Edit User Role
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#post-deactivate-user" class="toc-h2 toc-link" data-title="POST Deactivate User">
                         <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
-                        Reset Password
+                        Deactivate User
                       </a>
                   </li>
               </ul>
@@ -506,10 +512,17 @@
 <p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users</code></p>
 <h3 id='path-arguments'>Path Arguments</h3>
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -632,12 +645,19 @@
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/admins</code></p>
-<h3 id='path-arguments-2'>Path Arguments</h3>
+<h3 id='arguments'>Arguments</h3>
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -774,12 +794,19 @@
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/applicants</code></p>
-<h3 id='path-arguments-3'>Path Arguments</h3>
+<h3 id='arguments-2'>Arguments</h3>
 <table>
-  <thead></thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>:account_id <strong class="required">required</strong></td>
+      <td>path parameter</td>
       <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
     </tr>
   </tbody>
@@ -861,7 +888,114 @@
     </tr>
   </tbody>
 </table>
-<h2 id='get-evaluators'>GET Evaluators</h2><h2 id='post-reset-password'>POST Reset Password</h2>
+<h2 id='get-evaluators'>GET Evaluators</h2><h2 id='put-edit-user-role'>PUT Edit User Role</h2>
+<blockquote>
+<p>Example to promote/demote a user</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "old_role": 1,
+    "new_role": 0
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>200 OK
+</code></pre><h3 id='description-4'>Description</h3>
+<p>Promote or demote a user from your account list.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role</code></p>
+<h3 id='arguments-3'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:account_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+</tr>
+<tr>
+<td>:user_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The user id is returned from any of the user lists.</td>
+</tr>
+<tr>
+<td>old_role <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td><ul><li>0 -&gt; Owner</li><li>1 -&gt; Admin</li><li>2 -&gt; Applicant</li><li>3 -&gt; Evaluator</li></ul></td>
+</tr>
+<tr>
+<td>new_role <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td><ul><li>0 -&gt; Owner</li><li>1 -&gt; Admin</li><li>2 -&gt; Applicant</li><li>3 -&gt; Evaluator</li></ul></td>
+</tr>
+</tbody></table>
+<h2 id='post-deactivate-user'>POST Deactivate User</h2>
+<blockquote>
+<p>Example to deactivate a user</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "role": 1
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>200 OK
+</code></pre><h3 id='description-5'>Description</h3>
+<p>Deactivate a user from your account list.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate</code></p>
+<h3 id='arguments-4'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:account_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+</tr>
+<tr>
+<td>:user_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The user id is returned from any of the user lists.</td>
+</tr>
+<tr>
+<td>role <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td><ul><li>0 -&gt; Owner</li><li>1 -&gt; Admin</li><li>2 -&gt; Applicant</li><li>3 -&gt; Evaluator</li></ul></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>Role</code> is required since a users can have multiple roles in your account.
+</aside>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
