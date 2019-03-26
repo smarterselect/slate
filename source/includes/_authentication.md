@@ -14,22 +14,6 @@ curl --request POST \
           }'
 ```
 
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.smarterselect.com/api/v1/login")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request["content-type"] = 'application/json'
-request.body = "{\n\t\"user\": {\n\t\t\"email\": \"my-ss-email\",\n\t\t\"password\": \"my-ss-password\"\n\t}\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
 > Response body
 
 ```shell
@@ -49,7 +33,7 @@ puts response.read_body
     }
   },
   "meta": {
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMTIwMjEiLCJzY3AiOiJ1c2VyIiwiYXVkIjpudWxsLCJpYXQiOjE1NTMwOTkxMzEsImV4cCI6MTU1MzI3MTkzMSwianRpIjoiMjA0MGIwMGEtOTU1Zi00YjkxLTlhOTgtNGE4Nzk3MDczZWQzIn0.ysQKuahBos0ARQsR-2vdC2SRBG_9mhyydFcyhN6ndDk"
+    "token": "{{AUTH TOKEN}}"
   }
 }
 ```
