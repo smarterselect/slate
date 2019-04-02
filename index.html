@@ -296,6 +296,26 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#eval-groups" class="toc-h1 toc-link" data-title="Eval Groups">Eval Groups</a>
+              <ul class="toc-list-h2">
+                  <li>
+                      <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                      <a href="#get-eval-groups" class="toc-h2 toc-link" data-title="GET Eval Groups">
+                        <span class="item-label get" style="top: -1px;width: 33px;">GET</span>
+                        Eval Groups
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#post-remove-users" class="toc-h2 toc-link" data-title="POST Remove Users">
+                        <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
+                        Remove Users
+                      </a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -466,7 +486,7 @@
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -509,7 +529,7 @@
 </code></pre><h3 id='description'>Description</h3>
 <p>Gets a list of all your user objects</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users</code></p>
 <h3 id='path-arguments'>Path Arguments</h3>
 <table>
   <thead>
@@ -599,7 +619,7 @@
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/admins <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/admins <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -644,7 +664,7 @@
 </code></pre><h3 id='description-2'>Description</h3>
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/admins</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/admins</code></p>
 <h3 id='arguments'>Arguments</h3>
 <table>
   <thead>
@@ -744,7 +764,7 @@
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/applicants <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/applicants <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -793,7 +813,7 @@
 </code></pre><h3 id='description-3'>Description</h3>
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/applicants</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/applicants</code></p>
 <h3 id='arguments-2'>Arguments</h3>
 <table>
   <thead>
@@ -888,12 +908,179 @@
     </tr>
   </tbody>
 </table>
-<h2 id='get-evaluators'>GET Evaluators</h2><h2 id='put-edit-user-role'>PUT Edit User Role</h2>
+<h2 id='get-evaluators'>GET Evaluators</h2>
+<blockquote>
+<p>Example to get all evaluator users</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/evaluators <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"2123321"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"email"</span>: <span class="s2">"user1@gmail.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"User1"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 1"</span>,
+        <span class="s2">"created_on"</span>: <span class="s2">"2016-05-10 09:41:41"</span>,
+        <span class="s2">"last_login"</span>: null,
+        <span class="s2">"can-can_receive_sms-sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: <span class="s2">""</span>,
+        <span class="s2">"evals_size"</span>: 2,
+        <span class="s2">"active"</span>: <span class="nb">false</span>
+      <span class="o">}</span>,
+      <span class="s2">"relationships"</span>: <span class="o">{</span>
+        <span class="s2">"eval_groups"</span>: <span class="o">{</span>
+          <span class="s2">"data"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+              <span class="s2">"id"</span>: <span class="s2">"321"</span>,
+              <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>
+            <span class="o">}</span>
+          <span class="o">]</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/2123321?provider_id=4164"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"1232321"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"email"</span>: <span class="s2">"user2@gmail.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"User2"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 2"</span>,
+        <span class="s2">"created_on"</span>: <span class="s2">"2018-08-28 11:15:44"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2018-11-12 09:40:53"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
+        <span class="s2">"phone"</span>: <span class="s2">"+1 (600) 123-1234"</span>,
+        <span class="s2">"evals_size"</span>: 9,
+        <span class="s2">"active"</span>: <span class="nb">true</span>
+      <span class="o">}</span>,
+      <span class="s2">"relationships"</span>: <span class="o">{</span>
+        <span class="s2">"eval_groups"</span>: <span class="o">{</span>
+          <span class="s2">"data"</span>: <span class="o">[]</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/1232321?provider_id=4164"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='description-4'>Description</h3>
+<p>Gets a list of all your evaluator users objects</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/evalautors</code></p>
+<h3 id='arguments-3'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:account_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>auto-generated object identifier.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>object type.</td>
+</tr>
+<tr>
+<td><code>attributes[email]</code></td>
+<td>string</td>
+<td>email registrated by the user.</td>
+</tr>
+<tr>
+<td><code>attributes[first_name]</code></td>
+<td>string</td>
+<td>first name of the user.</td>
+</tr>
+<tr>
+<td><code>attributes[last_name]</code></td>
+<td>string</td>
+<td>last name of the user.</td>
+</tr>
+<tr>
+<td><code>attributes[organization_name]</code></td>
+<td>string</td>
+<td>organization name of the user.</td>
+</tr>
+<tr>
+<td><code>attributes[created_on]</code></td>
+<td>datetime</td>
+<td>date and time when the user was created.</td>
+</tr>
+<tr>
+<td><code>attributes[last_login]</code></td>
+<td>datetime</td>
+<td>last login of the user into SmarterSelect.</td>
+</tr>
+<tr>
+<td><code>attributes[can_receive_sms]</code></td>
+<td>boolean</td>
+<td>is user is able or not to receive sms.</td>
+</tr>
+<tr>
+<td><code>attributes[is_using_sso]</code></td>
+<td>boolean</td>
+<td>is your account using sso configuration.</td>
+</tr>
+<tr>
+<td><code>attributes[evals_size]</code></td>
+<td>integer</td>
+<td>quantity of evaluations this user has in your account.</td>
+</tr>
+<tr>
+<td><code>attributes[active]</code></td>
+<td>boolean</td>
+<td>if the user is active for this account.</td>
+</tr>
+<tr>
+<td><code>links[evals]</code></td>
+<td>string</td>
+<td>link to access to the user evaluations.</td>
+</tr>
+<tr>
+<td><code>relationships[eval_groups]</code></td>
+<td>object</td>
+<td>list all eval groups of this evaluator in this account.</td>
+</tr>
+</tbody></table>
+<h2 id='put-edit-user-role'>PUT Edit User Role</h2>
 <blockquote>
 <p>Example to promote/demote a user</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
@@ -905,11 +1092,11 @@
 <p>Response body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>200 OK
-</code></pre><h3 id='description-4'>Description</h3>
+</code></pre><h3 id='description-5'>Description</h3>
 <p>Promote or demote a user from your account list.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role</code></p>
-<h3 id='arguments-3'>Arguments</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role</code></p>
+<h3 id='arguments-4'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -948,7 +1135,7 @@
 <p>Example to deactivate a user</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
@@ -959,11 +1146,11 @@
 <p>Response body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>200 OK
-</code></pre><h3 id='description-5'>Description</h3>
+</code></pre><h3 id='description-6'>Description</h3>
 <p>Deactivate a user from your account list.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate</code></p>
-<h3 id='arguments-4'>Arguments</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate</code></p>
+<h3 id='arguments-5'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -995,6 +1182,142 @@
 <aside class="notice">
   <code>Role</code> is required since a users can have multiple roles in your account.
 </aside>
+<h1 id='eval-groups'>Eval Groups</h1><h2 id='overview'>Overview</h2>
+<p>Those are all evaluators groups related to your account.</p>
+<h2 id='get-eval-groups'>GET Eval Groups</h2>
+<blockquote>
+<p>Example to get all eval groups</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"1233"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"My eval group 1"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"4312"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"My Eval group 2"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='description'>Description</h3>
+<p>Gets a list of all your eval groups objects</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups</code></p>
+<h3 id='arguments'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:account_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>auto-generated object identifier.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>object type.</td>
+</tr>
+<tr>
+<td><code>attributes[name]</code></td>
+<td>string</td>
+<td>name of the eval group.</td>
+</tr>
+</tbody></table>
+<h2 id='post-remove-users'>POST Remove Users</h2>
+<blockquote>
+<p>Example to remove list of users from an eval group</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+  --data <span class="s1">'{
+    "user_ids": [982091]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"982091"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"email"</span>: <span class="s2">"evalautor@email.io"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Evalautor Name"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Evaluator Last Name"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"Eval. Org."</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: <span class="s2">""</span>,
+        <span class="s2">"created_on"</span>: <span class="s2">"2018-03-01 15:07:43"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2018-04-09 11:25:41"</span>,
+        <span class="s2">"is_using_sso"</span>: <span class="nb">false</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='description-2'>Description</h3>
+<p>Remove a list of user from a given eval group</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users</code></p>
+<h3 id='arguments-2'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:account_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+</tr>
+<tr>
+<td>:user_ids <strong class="required">required</strong></td>
+<td>body content</td>
+<td>array of integers</td>
+<td>Users ids to remove from given eval group.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>It returns all removed users basic data, refer object to <a href="#get-all-users">users endpoint</a></p>
 
       </div>
       <div class="dark-box">
