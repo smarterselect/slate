@@ -17,6 +17,7 @@ includes:
   - authentication
   - account
   - users
+  - eval_groups
 
 search: true
 ---

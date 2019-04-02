@@ -10,7 +10,7 @@ Those are all users related to your account.
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -59,7 +59,7 @@ Gets a list of all your user objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/providers/:account_id/users`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users`
 
 ### Path Arguments
 
@@ -155,7 +155,7 @@ Gets a list of all your user objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/admins \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/admins \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -206,7 +206,7 @@ Gets a list of all your applicant users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/providers/:account_id/admins`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/admins`
 
 ### Arguments
 
@@ -312,7 +312,7 @@ Gets a list of all your applicant users objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/applicants \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/applicants \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -367,7 +367,7 @@ Gets a list of all your applicant users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/providers/:account_id/applicants`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/applicants`
 
 ### Arguments
 
@@ -469,13 +469,116 @@ Gets a list of all your applicant users objects
 
 ## GET Evaluators
 
+> Example to get all evaluator users
+
+```shell
+curl --request GET \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/evaluators \
+  --header 'authorization: Bearer {token}'
+```
+
+> Response body
+
+```shell
+{
+  "data": [
+    {
+      "id": "2123321",
+      "type": "users",
+      "attributes": {
+        "email": "user1@gmail.com",
+        "first_name": "User1",
+        "last_name": "Doe",
+        "organization_name": "Organization 1",
+        "created_on": "2016-05-10 09:41:41",
+        "last_login": null,
+        "can-can_receive_sms-sms": false,
+        "phone": "",
+        "evals_size": 2,
+        "active": false
+      },
+      "relationships": {
+        "eval_groups": {
+          "data": [
+            {
+              "id": "321",
+              "type": "eval_group"
+            }
+          ]
+        }
+      },
+      "links": {
+        "evals": "/provider/list_user_evals_provider/2123321?provider_id=4164"
+      }
+    },
+    {
+      "id": "1232321",
+      "type": "users",
+      "attributes": {
+        "email": "user2@gmail.com",
+        "first_name": "User2",
+        "last_name": "Doe",
+        "organization_name": "Organization 2",
+        "created_on": "2018-08-28 11:15:44",
+        "last_login": "2018-11-12 09:40:53",
+        "can_receive_sms": true,
+        "phone": "+1 (600) 123-1234",
+        "evals_size": 9,
+        "active": true
+      },
+      "relationships": {
+        "eval_groups": {
+          "data": []
+        }
+      },
+      "links": {
+        "evals": "/provider/list_user_evals_provider/1232321?provider_id=4164"
+      }
+    },
+  ]
+}
+```
+
+### Description
+
+Gets a list of all your evaluator users objects
+
+### HTTP Request
+
+`GET https://api.smarterselect.com/v1/accounts/:account_id/evalautors`
+
+### Arguments
+
+| Parameter | Location | Type | Description
+| --------- | -------- | ---- | -----------
+| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
+
+### Response
+
+| Property | Type | Description
+| -------- | ---- | -----------
+| <code>id</code> | integer | auto-generated object identifier.
+| <code>type</code> | string | object type.
+| <code>attributes[email]</code> | string | email registrated by the user.
+| <code>attributes[first_name]</code> | string | first name of the user.
+| <code>attributes[last_name]</code> | string | last name of the user.
+| <code>attributes[organization_name]</code> | string | organization name of the user.
+| <code>attributes[created_on]</code> | datetime | date and time when the user was created.
+| <code>attributes[last_login]</code> | datetime | last login of the user into SmarterSelect.
+| <code>attributes[can_receive_sms]</code> | boolean | is user is able or not to receive sms.
+| <code>attributes[is_using_sso]</code> | boolean | is your account using sso configuration.
+| <code>attributes[evals_size]</code> | integer | quantity of evaluations this user has in your account.
+| <code>attributes[active]</code> | boolean | if the user is active for this account.
+| <code>links[evals]</code> | string | link to access to the user evaluations.
+| <code>relationships[eval_groups]</code> | object | list all eval groups of this evaluator in this account.
+
 ## PUT Edit User Role
 
 > Example to promote/demote a user
 
 ```shell
 curl --request PUT \
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role \
   --header 'authorization: Bearer {token}' \
   --header 'content-type: application/json' \
   --data '{
@@ -496,7 +599,7 @@ Promote or demote a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/role`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role`
 
 ### Arguments
 
@@ -513,7 +616,7 @@ Promote or demote a user from your account list.
 
 ```shell
 curl --request PUT \
-  --url https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate \
   --header 'authorization: Bearer {token}' \
   --header 'content-type: application/json' \
   --data '{
@@ -533,7 +636,7 @@ Deactivate a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/providers/:account_id/users/:user_id/deactivate`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate`
 
 ### Arguments
 
