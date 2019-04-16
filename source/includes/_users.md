@@ -545,7 +545,7 @@ Gets a list of all your evaluator users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/evalautors`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators`
 
 ### Arguments
 
