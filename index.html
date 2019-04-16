@@ -354,7 +354,7 @@
 <p>Example to get access token</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/login <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/login <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
             "user": {
@@ -391,7 +391,7 @@
 <p>To get your JTW:</p>
 
 <ol>
-<li>Use our <code>https://api.smarterselect.com/api/v1/login</code> endpoint by entering your SS credentials.</li>
+<li>Use our <code>https://api.smarterselect.com/v1/login</code> endpoint by entering your SS credentials.</li>
 <li>Get the token from the response body under <code>meta: {token: &#39;response_token&#39;}</code>.</li>
 <li>Your user information will be returned to you upon login.&quot;</li>
 </ol>
@@ -408,7 +408,7 @@
 <p>Example to get all accounts</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/api/v1/accounts <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -441,7 +441,7 @@
 <h3 id='description'>Description</h3>
 <p>Gets a list of all your accounts objects</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/api/v1/accounts</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts</code></p>
 <h3 id='response'>Response</h3>
 <table>
   <thead>
@@ -619,7 +619,7 @@
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/admins <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/admins <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -664,7 +664,7 @@
 </code></pre><h3 id='description-2'>Description</h3>
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/admins</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/admins</code></p>
 <h3 id='arguments'>Arguments</h3>
 <table>
   <thead>
@@ -764,7 +764,7 @@
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/applicants <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/applicants <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -813,7 +813,7 @@
 </code></pre><h3 id='description-3'>Description</h3>
 <p>Gets a list of all your applicant users objects</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/applicants</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/applicants</code></p>
 <h3 id='arguments-2'>Arguments</h3>
 <table>
   <thead>
@@ -913,7 +913,7 @@
 <p>Example to get all evaluator users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/evaluators <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -979,7 +979,7 @@
 </code></pre><h3 id='description-4'>Description</h3>
 <p>Gets a list of all your evaluator users objects</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/evalautors</code></p>
+<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators</code></p>
 <h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
