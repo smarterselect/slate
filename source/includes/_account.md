@@ -10,7 +10,7 @@ Those are all accounts related to your account.
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/api/v1/accounts \
+  --url https://api.smarterselect.com/v1/accounts \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -49,7 +49,7 @@ Gets a list of all your accounts objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/api/v1/accounts`
+`GET https://api.smarterselect.com/v1/accounts`
 
 ### Response
 

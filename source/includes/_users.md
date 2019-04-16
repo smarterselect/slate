@@ -155,7 +155,7 @@ Gets a list of all your user objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/admins \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/admins \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -206,7 +206,7 @@ Gets a list of all your applicant users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/admins`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/admins`
 
 ### Arguments
 
@@ -312,7 +312,7 @@ Gets a list of all your applicant users objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/applicants \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/applicants \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -367,7 +367,7 @@ Gets a list of all your applicant users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/applicants`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/applicants`
 
 ### Arguments
 
@@ -473,7 +473,7 @@ Gets a list of all your applicant users objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/evaluators \
+  --url https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -545,7 +545,7 @@ Gets a list of all your evaluator users objects
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/evalautors`
+`GET https://api.smarterselect.com/v1/accounts/:account_id/users/evalautors`
 
 ### Arguments
 

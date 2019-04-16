@@ -4,7 +4,7 @@
 
 ```shell
 curl --request POST \
-  --url https://api.smarterselect.com/api/v1/login \
+  --url https://api.smarterselect.com/v1/login \
   --header 'content-type: application/json' \
   --data '{
           	"user": {
@@ -42,7 +42,7 @@ API requests are made over HTTPS and authenticated with a Json Web Token (JWT). 
 
 To get your JTW:
 
-1. Use our `https://api.smarterselect.com/api/v1/login` endpoint by entering your SS credentials.
+1. Use our `https://api.smarterselect.com/v1/login` endpoint by entering your SS credentials.
 2. Get the token from the response body under `meta: {token: 'response_token'}`.
 3. Your user information will be returned to you upon login."
 
