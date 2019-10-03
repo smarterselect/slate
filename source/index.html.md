@@ -1,5 +1,5 @@
 ---
-title: Referencia API - 4Geeks Payments
+title: API Reference - SmarterSelect
 
 language_tabs:
   - shell
@@ -8,9 +8,7 @@ language_tabs:
   # - javascript
 
 toc_footers:
-  #- <a href='https://dashboard.payments.4geeks.io' target='_blank'>Obtenga llaves de acceso.</a>
-  #- <a href='http://gpayments-support.readthedocs.io/en/latest/libreria.html' target='_blank'>Librerías cliente.</a>
-  #- <a href='https://4geeks.io' target='_blank'>4Geeks Technologies, Inc.</a>
+  - <a href='https://www.smarterselect.com/' target='_blank'>SmarterSelect Main Page.</a>
 
 includes:
   #- response_codes
