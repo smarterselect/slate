@@ -2,7 +2,7 @@
 
 ## Overview
 
-Those are all users related to your account.
+These are all users related to your account.
 
 ## GET All Users
 
@@ -10,7 +10,7 @@ Those are all users related to your account.
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users \
+  --url https://api.smarterselect.com/v1/admins/users \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -20,373 +20,72 @@ curl --request GET \
 {
   "data": [
     {
-      "id": "626506",
-      "type": "users",
+      "id": "123456",
+      "type": "user",
       "attributes": {
-        "email": "user1@gmail.com",
-        "first_name": "User1",
+        "email": "John+provider@smarterselect.com",
+        "first_name": "John",
         "last_name": "Doe",
-        "organization_name": "Organization 1",
-        "created_on": "2016-05-10 09:41:41",
-        "last_login": null,
+        "organization_name": null,
+        "can_receive_sms": false,
+        "phone": null,
+        "created_on": "2019-10-03 14:24:32",
+        "last_login": "2019-10-03 16:37:25",
+        "is_using_sso": null
+      },
+      "links": {
+        "apps": null,
+        "evals": null
+      }
+    },
+    {
+      "id": "1278551",
+      "type": "user",
+      "attributes": {
+        "email": "John+evaluator@smarterselect.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "organization_name": "SmarterSelect",
         "can_receive_sms": false,
         "phone": "",
-        "is_using_sso": false
-      }
-    },
-    {
-      "id": "1051342",
-      "type": "users",
-      "attributes": {
-        "email": "user2@gmail.com",
-        "first_name": "User2",
-        "last_name": "Doe",
-        "organization_name": "Organization 2",
-        "created_on": "2018-08-28 11:15:44",
-        "last_login": "2018-11-12 09:40:53",
-        "can_receive_sms": true,
-        "phone": "+1 (600) 123-1234",
-        "is_using_sso": false
-      }
-    },
-  ]
-}
-```
-
-### Description
-
-Gets a list of all your user objects
-
-### HTTP Request
-
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users`
-
-### Path Arguments
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
-
-### Response
-
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th>Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>integer</td>
-      <td>auto-generated object identifier</td>
-    </tr>
-    <tr>
-      <td><code>type</code></td>
-      <td>string</td>
-      <td>object type</td>
-    </tr>
-    <tr>
-      <td><code>attributes[email]</code></td>
-      <td>string</td>
-      <td>email registrated by the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[first_name]</code></td>
-      <td>string</td>
-      <td>first name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_name]</code></td>
-      <td>string</td>
-      <td>last name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[organization_name]</code></td>
-      <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
-    </tr>
-    <tr>
-      <td><code>attributes[can_receive_sms]</code></td>
-      <td>boolean</td>
-      <td>is user is able or not to receive sms</td>
-    </tr>
-    <tr>
-      <td><code>attributes[phone]</code></td>
-      <td>string</td>
-      <td>phone number of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[is_using_sso]</code></td>
-      <td>boolean</td>
-      <td>is your account using sso configuration</td>
-    </tr>
-  </tbody>
-</table>
-
-## GET Admins
-
-> Example to get all account users
-
-```shell
-curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/admins \
-  --header 'authorization: Bearer {token}'
-```
-
-> Response body
-
-```shell
-{
-  "data": [
-    {
-      "id": "626506",
-      "type": "users",
-      "attributes": {
-        "email": "user1@gmail.com",
-        "first_name": "User1",
-        "last_name": "Doe",
-        "organization_name": "Organization 1",
-        "created_on": "2016-05-10 09:41:41",
-        "last_login": null,
-        "can-can_receive_sms-sms": false,
-        "phone": "",
-        "owner": false,
-        "active": true
-      }
-    },
-    {
-      "id": "1051342",
-      "type": "users",
-      "attributes": {
-        "email": "user2@gmail.com",
-        "first_name": "User2",
-        "last_name": "Doe",
-        "organization_name": "Organization 2",
-        "created_on": "2018-08-28 11:15:44",
-        "last_login": "2018-11-12 09:40:53",
-        "can_receive_sms": true,
-        "phone": "+1 (600) 123-1234",
-        "owner": true,
-        "active": true
-      }
-    },
-  ]
-}
-```
-
-### Description
-
-Gets a list of all your applicant users objects
-
-### HTTP Request
-
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/admins`
-
-### Arguments
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
-
-### Response
-
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th>Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>integer</td>
-      <td>auto-generated object identifier</td>
-    </tr>
-    <tr>
-      <td><code>type</code></td>
-      <td>string</td>
-      <td>object type</td>
-    </tr>
-    <tr>
-      <td><code>attributes[email]</code></td>
-      <td>string</td>
-      <td>email registrated by the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[first_name]</code></td>
-      <td>string</td>
-      <td>first name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_name]</code></td>
-      <td>string</td>
-      <td>last name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[organization_name]</code></td>
-      <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
-    </tr>
-    <tr>
-      <td><code>attributes[can_receive_sms]</code></td>
-      <td>boolean</td>
-      <td>is user is able or not to receive sms</td>
-    </tr>
-    <tr>
-      <td><code>attributes[phone]</code></td>
-      <td>string</td>
-      <td>phone number of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[is_using_sso]</code></td>
-      <td>boolean</td>
-      <td>is your account using sso configuration</td>
-    </tr>
-    <tr>
-      <td><code>attributes[owner]</code></td>
-      <td>string</td>
-      <td>if the user is owner or not in the giving account</td>
-    </tr>
-    <tr>
-      <td><code>attributes[active]</code></td>
-      <td>string</td>
-      <td>if the user is active or not in the giving account</td>
-    </tr>
-  </tbody>
-</table>
-
-## GET Applicants
-
-> Example to get all account users
-
-```shell
-curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/applicants \
-  --header 'authorization: Bearer {token}'
-```
-
-> Response body
-
-```shell
-{
-  "data": [
-    {
-      "id": "626506",
-      "type": "users",
-      "attributes": {
-        "email": "user1@gmail.com",
-        "first_name": "User1",
-        "last_name": "Doe",
-        "organization_name": "Organization 1",
-        "created_on": "2016-05-10 09:41:41",
-        "last_login": null,
-        "can-can_receive_sms-sms": false,
-        "phone": "",
-        "apps_size": 2
+        "created_on": "2019-10-03 15:23:09",
+        "last_login": "2019-10-03 15:24:17",
+        "is_using_sso": null
       },
       "links": {
-        "apps": "/provider/list_user_apps_provider/626506?provider_id=4164"
+        "apps": null,
+        "evals": null
       }
     },
     {
-      "id": "1051342",
-      "type": "users",
+      "id": "1278552",
+      "type": "user",
       "attributes": {
-        "email": "user2@gmail.com",
-        "first_name": "User2",
-        "last_name": "Doe",
-        "organization_name": "Organization 2",
-        "created_on": "2018-08-28 11:15:44",
-        "last_login": "2018-11-12 09:40:53",
-        "can_receive_sms": true,
-        "phone": "+1 (600) 123-1234",
-        "apps_size": 9
+        "email": "John+admin@smarterselect.com",
+        "first_name": "John",
+        "last_name": "Admin",
+        "organization_name": "SmarterSelect",
+        "can_receive_sms": false,
+        "phone": null,
+        "created_on": "2019-10-03 17:01:55",
+        "last_login": null,
+        "is_using_sso": null
       },
       "links": {
-        "apps": "/provider/list_user_apps_provider/1051342?provider_id=4164"
+        "apps": null,
+        "evals": null
       }
-    },
-  ]
+    }
+  ],
+  "meta": {
+    "total": 3
+  }
 }
 ```
 
 ### Description
 
-Gets a list of all your applicant users objects
-
-### HTTP Request
-
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/applicants`
-
-### Arguments
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
+Gets a list of all your users
 
 ### Response
 
@@ -401,7 +100,7 @@ Gets a list of all your applicant users objects
   <tbody>
     <tr>
       <td><code>id</code></td>
-      <td>integer</td>
+      <td>string</td>
       <td>auto-generated object identifier</td>
     </tr>
     <tr>
@@ -427,17 +126,7 @@ Gets a list of all your applicant users objects
     <tr>
       <td><code>attributes[organization_name]</code></td>
       <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
+      <td>organization name that the user belongs to</td>
     </tr>
     <tr>
       <td><code>attributes[can_receive_sms]</code></td>
@@ -450,9 +139,14 @@ Gets a list of all your applicant users objects
       <td>phone number of the user</td>
     </tr>
     <tr>
-      <td><code>attributes[apps_size]</code></td>
-      <td>integer</td>
-      <td>quantity of apps this user has in your account</td>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
     </tr>
     <tr>
       <td><code>attributes[is_using_sso]</code></td>
@@ -462,7 +156,308 @@ Gets a list of all your applicant users objects
     <tr>
       <td><code>links[apps]</code></td>
       <td>string</td>
-      <td>link to access to the user apps</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
+    </tr>
+  </tbody>
+</table>
+
+## GET Admins
+
+> Example to get all admin accounts
+
+```shell
+curl --request GET \
+  --url https://api.smarterselect.com/v1/admins/users/admins \
+  --header 'authorization: Bearer {token}'
+```
+
+> Response body
+
+```shell
+{
+  "data": [
+    {
+      "id": "123456",
+      "type": "user",
+      "attributes": {
+        "email": "John+provider@smarterselect.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "organization_name": null,
+        "can_receive_sms": false,
+        "phone": "",
+        "created_on": "2019-10-03 14:24:32",
+        "last_login": "2019-10-03 16:37:25",
+        "is_using_sso": null,
+        "owner": true
+      },
+      "links": {
+        "apps": null,
+        "evals": null
+      }
+    },
+    {
+      "id": "1278552",
+      "type": "user",
+      "attributes": {
+        "email": "John+admin@smarterselect.com",
+        "first_name": "John",
+        "last_name": "Admin",
+        "organization_name": "SmarterSelect",
+        "can_receive_sms": false,
+        "phone": null,
+        "created_on": "2019-10-03 17:01:55",
+        "last_login": null,
+        "is_using_sso": null,
+        "owner": false
+      },
+      "links": {
+        "apps": null,
+        "evals": null
+      }
+    }
+  ],
+  "meta": {
+    "total": 2
+  }
+}
+```
+
+### Description
+
+Gets a list of all your admins
+
+### Response
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>string</td>
+      <td>auto-generated object identifier</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td>string</td>
+      <td>object type</td>
+    </tr>
+    <tr>
+      <td><code>attributes[email]</code></td>
+      <td>string</td>
+      <td>email registrated by the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[first_name]</code></td>
+      <td>string</td>
+      <td>first name of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_name]</code></td>
+      <td>string</td>
+      <td>last name of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[organization_name]</code></td>
+      <td>string</td>
+      <td>organization name that the user belongs to</td>
+    </tr>
+    <tr>
+      <td><code>attributes[can_receive_sms]</code></td>
+      <td>boolean</td>
+      <td>is user is able or not to receive sms</td>
+    </tr>
+    <tr>
+      <td><code>attributes[phone]</code></td>
+      <td>string</td>
+      <td>phone number of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
+    </tr>
+    <tr>
+      <td><code>attributes[is_using_sso]</code></td>
+      <td>boolean</td>
+      <td>is your account using sso configuration</td>
+    </tr>
+    <tr>
+      <td><code>attributes[owner]</code></td>
+      <td>boolean</td>
+      <td>if the user is owner or not in the giving account</td>
+    </tr>
+    <tr>
+      <td><code>links[apps]</code></td>
+      <td>string</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## GET Applicants
+
+> Example to get all applicant accounts
+
+```shell
+curl --request GET \
+  --url https://api.smarterselect.com/v1/admins/users/applicants \
+  --header 'authorization: Bearer {token}'
+```
+
+> Response body
+
+```shell
+{
+  "data": [
+    {
+      "id": "123456",
+      "type": "user",
+      "attributes": {
+        "email": "John+provider@smarterselect.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "organization_name": null,
+        "can_receive_sms": false,
+        "phone": "",
+        "created_on": "2019-10-03 14:24:32",
+        "last_login": "2019-10-03 16:37:25",
+        "is_using_sso": null,
+        "apps_size": 0
+      },
+      "links": {
+        "apps": "/provider/list_user_apps_provider/123456?provider_id=1234",
+        "evals": null
+      }
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+### Description
+
+Gets a list of all your applicant users objects
+
+### Response
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td>string</td>
+      <td>auto-generated object identifier</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td>string</td>
+      <td>object type</td>
+    </tr>
+    <tr>
+      <td><code>attributes[email]</code></td>
+      <td>string</td>
+      <td>email registrated by the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[first_name]</code></td>
+      <td>string</td>
+      <td>first name of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_name]</code></td>
+      <td>string</td>
+      <td>last name of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[organization_name]</code></td>
+      <td>string</td>
+      <td>organization name that the user belongs to</td>
+    </tr>
+    <tr>
+      <td><code>attributes[can_receive_sms]</code></td>
+      <td>boolean</td>
+      <td>is user is able or not to receive sms</td>
+    </tr>
+    <tr>
+      <td><code>attributes[phone]</code></td>
+      <td>string</td>
+      <td>phone number of the user</td>
+    </tr>
+    <tr>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
+    </tr>
+    <tr>
+      <td><code>attributes[is_using_sso]</code></td>
+      <td>boolean</td>
+      <td>is your account using sso configuration</td>
+    </tr>
+    <tr>
+      <td><code>attributes[app_size]</code></td>
+      <td>integer</td>
+      <td>quantity of apps this user has in your account</td>
+    </tr>
+    <tr>
+      <td><code>links[apps]</code></td>
+      <td>string</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
     </tr>
   </tbody>
 </table>
@@ -473,85 +468,67 @@ Gets a list of all your applicant users objects
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators \
+  --url https://api.smarterselect.com/v1/admins/users/evaluators \
   --header 'authorization: Bearer {token}'
 ```
 
 > Response body
 
 ```shell
-{
+{{
   "data": [
     {
-      "id": "2123321",
-      "type": "users",
+      "id": "123456",
+      "type": "user",
       "attributes": {
-        "email": "user1@gmail.com",
-        "first_name": "User1",
+        "email": "John+provider@smarterselect.com",
+        "first_name": "John",
         "last_name": "Doe",
-        "organization_name": "Organization 1",
-        "created_on": "2016-05-10 09:41:41",
-        "last_login": null,
-        "can-can_receive_sms-sms": false,
+        "organization_name": null,
+        "can_receive_sms": false,
         "phone": "",
-        "evals_size": 2,
-        "active": false
-      },
-      "relationships": {
-        "eval_groups": {
-          "data": [
-            {
-              "id": "321",
-              "type": "eval_group"
-            }
-          ]
-        }
+        "created_on": "2019-10-03 14:24:32",
+        "last_login": "2019-10-03 16:37:25",
+        "is_using_sso": null,
+        "active": true,
+        "evals_size": 0
       },
       "links": {
-        "evals": "/provider/list_user_evals_provider/2123321?provider_id=4164"
+        "apps": null,
+        "evals": "/provider/list_user_evals_provider/123456?provider_id=1234"
       }
     },
     {
-      "id": "1232321",
-      "type": "users",
+      "id": "1278551",
+      "type": "user",
       "attributes": {
-        "email": "user2@gmail.com",
-        "first_name": "User2",
+        "email": "John+evaluator@smarterselect.com",
+        "first_name": "John",
         "last_name": "Doe",
-        "organization_name": "Organization 2",
-        "created_on": "2018-08-28 11:15:44",
-        "last_login": "2018-11-12 09:40:53",
-        "can_receive_sms": true,
-        "phone": "+1 (600) 123-1234",
-        "evals_size": 9,
-        "active": true
-      },
-      "relationships": {
-        "eval_groups": {
-          "data": []
-        }
+        "organization_name": "SmarterSelect",
+        "can_receive_sms": false,
+        "phone": "",
+        "created_on": "2019-10-03 15:23:09",
+        "last_login": "2019-10-03 15:24:17",
+        "is_using_sso": null,
+        "active": true,
+        "evals_size": 0
       },
       "links": {
-        "evals": "/provider/list_user_evals_provider/1232321?provider_id=4164"
+        "apps": null,
+        "evals": "/provider/list_user_evals_provider/1278551?provider_id=1234"
       }
-    },
-  ]
+    }
+  ],
+  "meta": {
+    "total": 2
+  }
 }
 ```
 
 ### Description
 
 Gets a list of all your evaluator users objects
-
-### HTTP Request
-
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators`
-
-### Arguments
-
-| Parameter | Location | Type | Description
-| --------- | -------- | ---- | -----------
-| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
 
 ### Response
 
@@ -562,15 +539,16 @@ Gets a list of all your evaluator users objects
 | <code>attributes[email]</code> | string | email registrated by the user.
 | <code>attributes[first_name]</code> | string | first name of the user.
 | <code>attributes[last_name]</code> | string | last name of the user.
-| <code>attributes[organization_name]</code> | string | organization name of the user.
+| <code>attributes[organization_name]</code> | string | organization name that the user belongs to.
+| <code>attributes[can_receive_sms]</code> | boolean | is user is able or not to receive sms.
+| <code>phone</code> | string | phone number of the user.
 | <code>attributes[created_on]</code> | datetime | date and time when the user was created.
 | <code>attributes[last_login]</code> | datetime | last login of the user into SmarterSelect.
-| <code>attributes[can_receive_sms]</code> | boolean | is user is able or not to receive sms.
 | <code>attributes[is_using_sso]</code> | boolean | is your account using sso configuration.
 | <code>attributes[evals_size]</code> | integer | quantity of evaluations this user has in your account.
-| <code>attributes[active]</code> | boolean | if the user is active for this account.
+| <code>links[apps]</code> | string | link to access to the user applicants.
 | <code>links[evals]</code> | string | link to access to the user evaluations.
-| <code>relationships[eval_groups]</code> | object | list all eval groups of this evaluator in this account.
+| <code>meta[total]</code> | object | quantity of users retrieved.
 
 ## PUT Edit User Role
 
@@ -578,7 +556,7 @@ Gets a list of all your evaluator users objects
 
 ```shell
 curl --request PUT \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role \
+  --url https://api.smarterselect.com//v1/admins/users/:id/role \
   --header 'authorization: Bearer {token}' \
   --header 'content-type: application/json' \
   --data '{
@@ -591,6 +569,31 @@ curl --request PUT \
 
 ```shell
 200 OK
+{
+  "data": {
+    "id": "1278551",
+    "type": "user",
+    "attributes": {
+      "email": "John+evaluator@smarterselect.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "organization_name": "SmarterSelect",
+      "can_receive_sms": false,
+      "phone": "",
+      "created_on": "2019-10-03 15:23:09",
+      "last_login": "2019-10-03 15:24:17",
+      "is_using_sso": null,
+      "role": true
+    },
+    "links": {
+      "apps": null,
+      "evals": null
+    }
+  },
+  "meta": {
+    "total": null
+  }
+}
 ```
 
 ### Description
@@ -599,13 +602,12 @@ Promote or demote a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role`
+`GET https://api.smarterselect.com/v1/admins/users/:id/role`
 
 ### Arguments
 
 | Parameter | Location | Type | Description
 | --------- | -------- | ---- | -----------
-| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
 | :user_id <strong class="required">required</strong> | path parameter | integer | The user id is returned from any of the user lists.
 | old_role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
 | new_role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
@@ -615,8 +617,8 @@ Promote or demote a user from your account list.
 > Example to deactivate a user
 
 ```shell
-curl --request PUT \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate \
+curl --request POST \
+  --url https://api.smarterselect.com/v1/admins/users/:id/deactivate \
   --header 'authorization: Bearer {token}' \
   --header 'content-type: application/json' \
   --data '{
@@ -628,6 +630,32 @@ curl --request PUT \
 
 ```shell
 200 OK
+
+{
+  "data": {
+    "id": "1278551",
+    "type": "user",
+    "attributes": {
+      "email": "John+evaluator@smarterselect.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "organization_name": "SmarterSelect",
+      "can_receive_sms": false,
+      "phone": "",
+      "created_on": "2019-10-03 15:23:09",
+      "last_login": "2019-10-03 15:24:17",
+      "is_using_sso": null,
+      "role": true
+    },
+    "links": {
+      "apps": null,
+      "evals": null
+    }
+  },
+  "meta": {
+    "total": null
+  }
+}
 ```
 
 ### Description
@@ -636,13 +664,12 @@ Deactivate a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate`
+`GET https://api.smarterselect.com/v1/admins/users/:id/deactivate`
 
 ### Arguments
 
 | Parameter | Location | Type | Description
 | --------- | -------- | ---- | -----------
-| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
 | :user_id <strong class="required">required</strong> | path parameter | integer | The user id is returned from any of the user lists.
 | role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
 
