@@ -11,11 +11,11 @@ toc_footers:
   - <a href='https://www.smarterselect.com/' target='_blank'>SmarterSelect Main Page.</a>
 
 includes:
-  #- response_codes
+  - errors
   - authentication
-  - account
   - users
   - eval_groups
+  - views
 
 search: true
 ---
