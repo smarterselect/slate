@@ -16,6 +16,7 @@ includes:
   - users
   - eval_groups
   - views
+  - programs
 
 search: true
 ---
