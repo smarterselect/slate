@@ -1,5 +1,7 @@
 # Authentication
 
+## POST Access Token
+
 > Example to get access token
 
 ```shell

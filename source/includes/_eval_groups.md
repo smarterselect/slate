@@ -1,4 +1,4 @@
-# Eval Groups
+# Evaluator Groups
 
 ## Overview
 
@@ -10,7 +10,7 @@ Those are all evaluators groups related to your account.
 
 ```shell
 curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups \
+  --url https://api.smarterselect.com/v1/admins/eval_groups \
   --header 'authorization: Bearer {token}'
 ```
 
@@ -20,17 +20,17 @@ curl --request GET \
 {
   "data": [
     {
-      "id": "1233",
+      "id": "1234",
       "type": "eval_group",
       "attributes": {
-        "name": "My eval group 1"
+        "name": "My Eval Group 1"
       }
     },
     {
-      "id": "4312",
+      "id": "5678",
       "type": "eval_group",
       "attributes": {
-        "name": "My Eval group 2"
+        "name": "My Eval Group 2"
       }
     }
   ]
@@ -41,16 +41,6 @@ curl --request GET \
 
 Gets a list of all your eval groups objects
 
-### HTTP Request
-
-`GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups`
-
-### Arguments
-
-| Parameter | Location | Type | Description
-| --------- | -------- | ---- | -----------
-| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
-
 ### Response
 
 | Property | Type | Description
@@ -59,16 +49,16 @@ Gets a list of all your eval groups objects
 | <code>type</code> | string | object type.
 | <code>attributes[name]</code> | string | name of the eval group.
 
-## POST Remove Users
+## POST Remove Users From Eval Group
 
 > Example to remove list of users from an eval group
 
 ```shell
-curl --request GET \
-  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users \
+curl --request POST \
+  --url https://api.smarterselect.com/v1/admins/eval_groups/:eval_group_id/remove_users \
   --header 'authorization: Bearer {token}'
   --data '{
-  	"user_ids": [982091]
+  	"user_ids": [123458]
   }'
 ```
 
@@ -78,18 +68,22 @@ curl --request GET \
 {
   "data": [
     {
-      "id": "982091",
+      "id": "123458",
       "type": "user",
       "attributes": {
-        "email": "evalautor@email.io",
-        "first_name": "Evalautor Name",
-        "last_name": "Evaluator Last Name",
-        "organization_name": "Eval. Org.",
-        "can_receive_sms": false,
-        "phone": "",
-        "created_on": "2018-03-01 15:07:43",
-        "last_login": "2018-04-09 11:25:41",
-        "is_using_sso": false
+        "email": "jane+admin@smarterselect.com",
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "organization_name": "Smarter Select",
+        "can_receive_sms": true,
+        "phone": null,
+        "created_on": "2012-01-28 13:07:11",
+        "last_login": "2019-05-29 11:08:05",
+        "is_using_sso": true
+      },
+      "links": {
+        "apps": null,
+        "evals": null
       }
     }
   ]
@@ -102,14 +96,14 @@ Remove a list of user from a given eval group
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users`
+`GET https://api.smarterselect.com/v1/admins/eval_groups/:eval_group_id/remove_users`
 
 ### Arguments
 
 | Parameter | Location | Type | Description
 | --------- | -------- | ---- | -----------
-| :account_id <strong class="required">required</strong> | path parameter | integer | The account ID got it from <a href="#account">accounts endpoint</a>
-| :user_ids <strong class="required">required</strong> | body content | array of integers | Users ids to remove from given eval group.
+| :eval_group_id <strong class="required">required</strong> | path parameter | integer | ID of the Eval Group where you want to remove a user.
+| user_ids <strong class="required">required</strong> | body content | array of integers | Users ids to remove from given eval group.
 
 ### Response
 
