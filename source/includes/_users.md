@@ -23,7 +23,7 @@ curl --request GET \
       "id": "123456",
       "type": "user",
       "attributes": {
-        "email": "John+provider@smarterselect.com",
+        "email": "john+provider@smarterselect.com",
         "first_name": "John",
         "last_name": "Doe",
         "organization_name": null,
@@ -39,12 +39,12 @@ curl --request GET \
       }
     },
     {
-      "id": "1278551",
+      "id": "123457",
       "type": "user",
       "attributes": {
-        "email": "John+evaluator@smarterselect.com",
-        "first_name": "John",
-        "last_name": "Doe",
+        "email": "juan+evaluator@smarterselect.com",
+        "first_name": "Juan",
+        "last_name": "Perez",
         "organization_name": "SmarterSelect",
         "can_receive_sms": false,
         "phone": "",
@@ -58,12 +58,12 @@ curl --request GET \
       }
     },
     {
-      "id": "1278552",
+      "id": "123458",
       "type": "user",
       "attributes": {
-        "email": "John+admin@smarterselect.com",
-        "first_name": "John",
-        "last_name": "Admin",
+        "email": "jane+admin@smarterselect.com",
+        "first_name": "Jane",
+        "last_name": "Doe",
         "organization_name": "SmarterSelect",
         "can_receive_sms": false,
         "phone": null,
@@ -190,7 +190,7 @@ curl --request GET \
       "id": "123456",
       "type": "user",
       "attributes": {
-        "email": "John+provider@smarterselect.com",
+        "email": "john+provider@smarterselect.com",
         "first_name": "John",
         "last_name": "Doe",
         "organization_name": null,
@@ -207,12 +207,12 @@ curl --request GET \
       }
     },
     {
-      "id": "1278552",
+      "id": "123458",
       "type": "user",
       "attributes": {
-        "email": "John+admin@smarterselect.com",
-        "first_name": "John",
-        "last_name": "Admin",
+        "email": "jane+admin@smarterselect.com",
+        "first_name": "Jane",
+        "last_name": "Doe",
         "organization_name": "SmarterSelect",
         "can_receive_sms": false,
         "phone": null,
@@ -346,7 +346,7 @@ curl --request GET \
       "id": "123456",
       "type": "user",
       "attributes": {
-        "email": "John+provider@smarterselect.com",
+        "email": "john+provider@smarterselect.com",
         "first_name": "John",
         "last_name": "Doe",
         "organization_name": null,
@@ -481,7 +481,7 @@ curl --request GET \
       "id": "123456",
       "type": "user",
       "attributes": {
-        "email": "John+provider@smarterselect.com",
+        "email": "john+provider@smarterselect.com",
         "first_name": "John",
         "last_name": "Doe",
         "organization_name": null,
@@ -499,12 +499,12 @@ curl --request GET \
       }
     },
     {
-      "id": "1278551",
+      "id": "123457",
       "type": "user",
       "attributes": {
-        "email": "John+evaluator@smarterselect.com",
-        "first_name": "John",
-        "last_name": "Doe",
+        "email": "juan+evaluator@smarterselect.com",
+        "first_name": "Juan",
+        "last_name": "Perez",
         "organization_name": "SmarterSelect",
         "can_receive_sms": false,
         "phone": "",
@@ -516,7 +516,7 @@ curl --request GET \
       },
       "links": {
         "apps": null,
-        "evals": "/provider/list_user_evals_provider/1278551?provider_id=1234"
+        "evals": "/provider/list_user_evals_provider/123457?provider_id=1234"
       }
     }
   ],
@@ -571,12 +571,12 @@ curl --request PUT \
 200 OK
 {
   "data": {
-    "id": "1278551",
+    "id": "123457",
     "type": "user",
     "attributes": {
-      "email": "John+evaluator@smarterselect.com",
-      "first_name": "John",
-      "last_name": "Doe",
+      "email": "juan+evaluator@smarterselect.com",
+      "first_name": "Juan",
+      "last_name": "Perez",
       "organization_name": "SmarterSelect",
       "can_receive_sms": false,
       "phone": "",
@@ -633,12 +633,12 @@ curl --request POST \
 
 {
   "data": {
-    "id": "1278551",
+    "id": "123457",
     "type": "user",
     "attributes": {
-      "email": "John+evaluator@smarterselect.com",
-      "first_name": "John",
-      "last_name": "Doe",
+      "email": "juan+evaluator@smarterselect.com",
+      "first_name": "Juan",
+      "last_name": "Perez",
       "organization_name": "SmarterSelect",
       "can_receive_sms": false,
       "phone": "",
@@ -664,7 +664,7 @@ Deactivate a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/admins/users/:id/deactivate`
+`GET https://api.smarterselect.com/v1/admins/users/:user_id/deactivate`
 
 ### Arguments
 
@@ -674,5 +674,70 @@ Deactivate a user from your account list.
 | role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
 
 <aside class="notice">
-  <code>Role</code> is required since a users can have multiple roles in your account.
+  <code>Role</code> is required since a user can have multiple roles in your account.
+</aside>
+
+## POST Activate User
+
+> Example to activate a user
+
+```shell
+curl --request POST \
+  --url https://api.smarterselect.com/v1/admins/users/:id/activate \
+  --header 'authorization: Bearer {token}' \
+  --header 'content-type: application/json' \
+  --data '{
+  	"role": 1
+  }'
+```
+
+> Response body
+
+```shell
+200 OK
+
+{
+  "data": {
+    "id": "123457",
+    "type": "user",
+    "attributes": {
+      "email": "juan+evaluator@emarterselect.com",
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "organization_name": "SmarterSelect",
+      "can_receive_sms": false,
+      "phone": "",
+      "created_on": "2019-10-03 15:23:09",
+      "last_login": "2019-10-03 15:24:17",
+      "is_using_sso": null,
+      "role": true
+    },
+    "links": {
+      "apps": null,
+      "evals": null
+    }
+  },
+  "meta": {
+    "total": null
+  }
+}
+```
+
+### Description
+
+Activate a user from your account list.
+
+### HTTP Request
+
+`GET https://api.smarterselect.com/v1/admins/users/:user_id/activate`
+
+### Arguments
+
+| Parameter | Location | Type | Description
+| --------- | -------- | ---- | -----------
+| :user_id <strong class="required">required</strong> | path parameter | integer | The user id is returned from any of the user lists.
+| role <strong class="required">required</strong> | body content | integer | <ul><li>0 -> Owner</li><li>1 -> Admin</li><li>2 -> Applicant</li><li>3 -> Evaluator</li></ul>
+
+<aside class="notice">
+  <code>Role</code> is required since a user can have multiple roles in your account.
 </aside>
