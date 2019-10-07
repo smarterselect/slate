@@ -6,7 +6,7 @@ Retrieve all the information regarding the programs that you created.
 
 ## GET All Programs
 
-> Example to create a view created your account.
+> Example to get all the programs.
 
 ```shell
 curl --request GET \
@@ -134,36 +134,36 @@ Get a List for all the programs asociated to the account
 | <code>facebook_url</code> | string | url for this program on facebook
 | <code>evaluation_anonymous</code> | boolean | if the evaluation if anonymous
 | <code>autologin_enabled</code> | string | if autologin is enabled
-| <code>security_key</code> | string | null
-| <code>assign_to_evaluator</code> | boolean | false
-| <code>filter_evaluator_email</code> | boolean | false
-| <code>evaluator_email_filter</code> | string | null
-| <code>short_description</code> | string | "program shortdescription ",
-| <code>matching_configured</code> | string | null
-| <code>disable_application_preview</code> | boolean | false
-| <code>allow_multiple_applications_per_user</code> | boolean | if many users can apply to this program
+| <code>security_key</code> | string | security key
+| <code>assign_to_evaluator</code> | boolean | if is assigned to an evaluator
+| <code>filter_evaluator_email</code> | boolean | if can filter evaluator email
+| <code>evaluator_email_filter</code> | string | the filter applied to the email
+| <code>short_description</code> | string | short description
+| <code>matching_configured</code> | string | the matching configuration
+| <code>disable_application_preview</code> | boolean | if application preview should be disabled.
+| <code>allow_multiple_applications_per_user</code> | boolean | if multiple users can apply
 | <code>lock_after_submit</code> | boolean | if this program should be locked after is submitted
-| <code>controlled_app</code> | boolean | false
-| <code>notification_on_submission</code> | boolean | true
-| <code>controlled_app_minutes</code> | string | 0
-| <code>display_program_info_if_inactive</code> | string |false
+| <code>controlled_app</code> | boolean | if is an controlled app
+| <code>notification_on_submission</code> | boolean | if is notificated to the user after submission
+| <code>controlled_app_minutes</code> | integer | minutes for controlled app
+| <code>display_program_info_if_inactive</code> | string |displayed information
 | <code>public</code> | boolean | if this program is public
-| <code>hide_facebook_sharing</code> | boolean | true
-| <code>view_after_deadline</code> | boolean | false
-| <code>survey_app</code> | boolean | false
-| <code>redirect_url</code> | string | "www.google.com"
-| <code>confirmation_text</code> | string | "Thank you forapplying <br /><br /| <code>Have a nice one!",
-| <code>evaluation_db_search</code> | boolean | false
-| <code>hide_for_apps_table</code> | boolean | false
+| <code>hide_facebook_sharing</code> | boolean | if facebook sharing should be hidden
+| <code>view_after_deadline</code> | boolean | if can be displayed after the deadline
+| <code>survey_app</code> | boolean | if is an survey app
+| <code>redirect_url</code> | string | link to redirect
+| <code>confirmation_text</code> | string | Text displayed after confirmation
+| <code>evaluation_db_search</code> | boolean | search on database
+| <code>hide_for_apps_table</code> | boolean | if this should be showed on table
 | <code>single_sign_on</code> | boolean | false
-| <code>nickname</code> | string | "Common app "
-| <code>short_url</code> | string | "https://goo.gl/link"
-| <code>sms</code> | boolean | true
-| <code>redirect_logout_uri</code> | string | ""
-| <code>eval_share_notes</code> | boolean | true
-| <code>program_cycle_id</code> | string | 100
-| <code>use_contact_info</code> | boolean | false
-| <code>contact_address</code> | string | "Somewhere"
-| <code>contact_city</code> | string | "Some City"
-| <code>contact_state</code> | string | "AL"
-| <code>contact_zip_code</code> | string | "2000"
+| <code>nickname</code> | string | nickname of the program
+| <code>short_url</code> | string | shorter URL meant to share
+| <code>sms</code> | boolean | if can send SMS
+| <code>redirect_logout_uri</code> | string | URI to redirect after logout
+| <code>eval_share_notes</code> | boolean | notes of the sharing
+| <code>program_cycle_id</code> | string | id of the program cycle
+| <code>use_contact_info</code> | boolean | if contact info can be used
+| <code>contact_address</code> | string | Address of the contact
+| <code>contact_city</code> | string | city of the contact
+| <code>contact_state</code> | string | state of the contact
+| <code>contact_zip_code</code> | string | zip code of the contact

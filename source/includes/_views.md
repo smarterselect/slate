@@ -81,6 +81,7 @@ Update a view given the ID.
 | Parameter | Location | Type | Description
 | --------- | -------- | ---- | -----------
 | :view_id <strong class="required">required</strong> | path parameter | integer | id of the view that will be modified.
+| {name | type | user_id | program_id} | body request | string | parameters that want to be changed
 
 ## DELETE Delete View on your Account
 

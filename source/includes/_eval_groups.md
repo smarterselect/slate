@@ -56,7 +56,7 @@ Gets a list of all your eval groups objects
 ```shell
 curl --request POST \
   --url https://api.smarterselect.com/v1/admins/eval_groups/:eval_group_id/remove_users \
-  --header 'authorization: Bearer {token}'
+  --header 'authorization: Bearer {token}' \
   --data '{
   	"user_ids": [123458]
   }'

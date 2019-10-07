@@ -591,7 +591,7 @@ curl --request PUT \
     }
   },
   "meta": {
-    "total": null
+    "total": 1
   }
 }
 ```
@@ -664,7 +664,7 @@ Deactivate a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/admins/users/:user_id/deactivate`
+`POST https://api.smarterselect.com/v1/admins/users/:user_id/deactivate`
 
 ### Arguments
 
@@ -729,7 +729,7 @@ Activate a user from your account list.
 
 ### HTTP Request
 
-`GET https://api.smarterselect.com/v1/admins/users/:user_id/activate`
+`POST https://api.smarterselect.com/v1/admins/users/:user_id/activate`
 
 ### Arguments
 
