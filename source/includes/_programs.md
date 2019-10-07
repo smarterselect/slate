@@ -131,9 +131,9 @@ Get a List for all the programs asociated to the account
 | <code>recommender_deadline</code> | string | XXXXX
 | <code>evaluator_deadline</code> | string | XXXXXX
 | <code>sds</code> | boolean | XXXXXX
-| <code>facebook_url</code> | string | url for this program of facebook
-| <code>evaluation_anonymous</code> | boolean | true
-| <code>autologin_enabled</code> | string | null
+| <code>facebook_url</code> | string | url for this program on facebook
+| <code>evaluation_anonymous</code> | boolean | if the evaluation if anonymous
+| <code>autologin_enabled</code> | string | if autologin is enabled
 | <code>security_key</code> | string | null
 | <code>assign_to_evaluator</code> | boolean | false
 | <code>filter_evaluator_email</code> | boolean | false
@@ -141,13 +141,13 @@ Get a List for all the programs asociated to the account
 | <code>short_description</code> | string | "program shortdescription ",
 | <code>matching_configured</code> | string | null
 | <code>disable_application_preview</code> | boolean | false
-| <code>allow_multiple_applications_per_user</code> | boolean | true
-| <code>lock_after_submit</code> | boolean | true
+| <code>allow_multiple_applications_per_user</code> | boolean | if many users can apply to this program
+| <code>lock_after_submit</code> | boolean | if this program should be locked after is submitted
 | <code>controlled_app</code> | boolean | false
 | <code>notification_on_submission</code> | boolean | true
 | <code>controlled_app_minutes</code> | string | 0
 | <code>display_program_info_if_inactive</code> | string |false
-| <code>public</code> | boolean | false
+| <code>public</code> | boolean | if this program is public
 | <code>hide_facebook_sharing</code> | boolean | true
 | <code>view_after_deadline</code> | boolean | false
 | <code>survey_app</code> | boolean | false

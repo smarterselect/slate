@@ -13,10 +13,11 @@ toc_footers:
 includes:
   - errors
   - authentication
-  - users
+  - admin_users
   - eval_groups
   - views
   - programs
+  - super_users
 
 search: true
 ---

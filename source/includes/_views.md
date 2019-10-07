@@ -11,7 +11,14 @@ Endpoints related to the views created on your account. You can check all of the
 ```shell
 curl --request POST \
   --url https://api.smarterselect.com/v1/admins/views \
-  --header 'authorization: Bearer {token}'
+  --header 'authorization: Bearer {token}' \
+  --header 'content-type: application/json' \
+  --data '{
+    "name": "test view",
+    "type": "View::App",
+    "user_id": 123456,
+    "program_id": 12586
+  }'
 ```
 
 > Response
@@ -33,7 +40,7 @@ Create a new view in your account.
 | Parameter | Location | Type | Description
 | --------- | -------- | ---- | -----------
 | name <strong class="required">required</strong> | body content | string | name of the view
-| type <strong class="required">required</strong> | body content | string | type of the new view
+| type <strong class="required">required</strong> | body content | string | type of the new view. The type MUST exists.
 | user_id <strong class="required">required</strong> | body content | integer | user that will have the new view
 | program_id <strong class="required">required</strong> | body content | integer | program that will have the new view
 
@@ -45,6 +52,14 @@ Create a new view in your account.
 curl --request { PUT | PATCH } \
   --url https://api.smarterselect.com/v1/admins/views/:id \
   --header 'authorization: Bearer {token}'
+  --header 'content-type: application/json' \
+  --data '{
+    "name": "test view",
+    "type": "View::App",
+    "user_id": 123456,
+    "program_id": 12586
+  }'
+
 ```
 
 > Response
