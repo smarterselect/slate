@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Referencia API - 4Geeks Payments</title>
+    <title>API Reference - SmarterSelect</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -236,18 +236,15 @@
               </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
           <li>
-            <a href="#account" class="toc-h1 toc-link" data-title="Account">Account</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                      <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#get-all-accounts" class="toc-h2 toc-link" data-title="GET All Accounts">
-                        <span class="item-label get" style="top: -1px;width: 33px;">GET</span>
-                        All Accounts
+                      <a href="#post-access-token" class="toc-h2 toc-link" data-title="POST Access Token">
+                        <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
+                        Access Token
                       </a>
                   </li>
               </ul>
@@ -294,10 +291,16 @@
                         Deactivate User
                       </a>
                   </li>
+                  <li>
+                      <a href="#post-activate-user" class="toc-h2 toc-link" data-title="POST Activate User">
+                        <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
+                        Activate User
+                      </a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#eval-groups" class="toc-h1 toc-link" data-title="Eval Groups">Eval Groups</a>
+            <a href="#evaluator-groups" class="toc-h1 toc-link" data-title="Evaluator Groups">Evaluator Groups</a>
               <ul class="toc-list-h2">
                   <li>
                       <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
@@ -309,14 +312,74 @@
                       </a>
                   </li>
                   <li>
-                      <a href="#post-remove-users" class="toc-h2 toc-link" data-title="POST Remove Users">
+                      <a href="#post-remove-users-from-eval-group" class="toc-h2 toc-link" data-title="POST Remove Users From Eval Group">
                         <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
-                        Remove Users
+                        Remove Users From Eval Group
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#views" class="toc-h1 toc-link" data-title="Views">Views</a>
+              <ul class="toc-list-h2">
+                  <li>
+                      <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                      <a href="#post-create-view-on-your-account" class="toc-h2 toc-link" data-title="POST Create View on your Account">
+                        <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
+                        Create View on your Account
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#put-patch-update-view-on-your-account" class="toc-h2 toc-link" data-title="PUT/PATCH Update View on your Account">PUT/PATCH Update View on your Account</a>
+                  </li>
+                  <li>
+                      <a href="#delete-delete-view-on-your-account" class="toc-h2 toc-link" data-title="DELETE Delete View on your Account">
+                        <span class="item-label delete" style="top: -1px;width: 33px;">DELETE</span>
+                        Delete View on your Account
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#programs" class="toc-h1 toc-link" data-title="Programs">Programs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                      <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                      <a href="#get-all-programs" class="toc-h2 toc-link" data-title="GET All Programs">
+                        <span class="item-label get" style="top: -1px;width: 33px;">GET</span>
+                        All Programs
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users-as-superadmin" class="toc-h1 toc-link" data-title="Users as SuperAdmin">Users as SuperAdmin</a>
+              <ul class="toc-list-h2">
+                  <li>
+                      <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                      <a href="#get-all-users-as-superadmin" class="toc-h2 toc-link" data-title="GET All Users as SuperAdmin">
+                        <span class="item-label get" style="top: -1px;width: 33px;">GET</span>
+                        All Users as SuperAdmin
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#delete-specific-user-as-superadmin" class="toc-h2 toc-link" data-title="DELETE Specific User as SuperAdmin">
+                        <span class="item-label delete" style="top: -1px;width: 33px;">DELETE</span>
+                        Specific User as SuperAdmin
                       </a>
                   </li>
               </ul>
           </li>
       </ul>
+        <ul class="toc-footer">
+            <li><a href='https://www.smarterselect.com/' target='_blank'>SmarterSelect Main Page.</a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -349,17 +412,62 @@
 <p>In addition, when making requests that create or update a resource, parameters are sent as JSON in the POST request and the content type header must be set to the JSON content type: <code>Content-Type: application/json</code></p>
 <h3 id='cross-origin-sharing'>Cross Origin Sharing</h3>
 <p>The SmarterSelect API supports Cross Origin Resource Sharing (CORS), so you can make requests from any location.</p>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='errors'>Errors</h1>
+<p>The API may throw different results if the request didn&#39;t follow the right flow. Here is a list of possible errors and what might be failing. Fix the error with the information provided in this list and try again.</p>
+
+<p>The API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>400</code></td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>Unauthorized -- Your Access Token expired or is invalid.</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Forbidden -- You dont have the permissions to make this request.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Not Found -- The URL provided doesn&#39;t exist, or the resource that you want to access doesn&#39;t exist.</td>
+</tr>
+<tr>
+<td><code>405</code></td>
+<td>Method Not Allowed -- You tried to access with an invalid method, e.g tried POST when the endpoint only allows GET.</td>
+</tr>
+<tr>
+<td><code>406</code></td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td><code>410</code></td>
+<td>Gone -- The resource requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='authentication'>Authentication</h1><h2 id='post-access-token'>POST Access Token</h2>
 <blockquote>
 <p>Example to get access token</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/login <span class="se">\</span>
+  --url https://api.smarterselect.com/oauth/token <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
-            "user": {
-                "email": "my-ss-email",
-                "password": "my-ss-password"
+            {
+                "grant_type": "client_credentials",
+                "client_id": "my SS Client ID",
+                "client_secret": "my SS Client Secret"
             }
           }'</span>
 </code></pre>
@@ -367,126 +475,27 @@
 <p>Response body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="o">{</span>
-    <span class="s2">"id"</span>: <span class="s2">"113123"</span>,
-    <span class="s2">"type"</span>: <span class="s2">"users"</span>,
-    <span class="s2">"attributes"</span>: <span class="o">{</span>
-      <span class="s2">"email"</span>: <span class="s2">"my-ss-email"</span>,
-      <span class="s2">"first-name"</span>: <span class="s2">"Han"</span>,
-      <span class="s2">"last-name"</span>: <span class="s2">"Solo"</span>,
-      <span class="s2">"organization-name"</span>: <span class="s2">"My organizaiton"</span>,
-      <span class="s2">"created-on"</span>: <span class="s2">"2014-02-11 07:19:55"</span>,
-      <span class="s2">"last-login"</span>: <span class="s2">"2019-03-19 16:56:21"</span>,
-      <span class="s2">"can-receive-sms"</span>: <span class="nb">true</span>,
-      <span class="s2">"phone"</span>: <span class="s2">"+1 (500) 858 7677"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="s2">"meta"</span>: <span class="o">{</span>
-    <span class="s2">"token"</span>: <span class="s2">"{{AUTH TOKEN}}"</span>
-  <span class="o">}</span>
+  <span class="s2">"access_token"</span>: <span class="s2">"{{AUTH TOKEN}}"</span>,
+  <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
+  <span class="s2">"expires_in"</span>: 7200,
+  <span class="s2">"created_at"</span>: 1570123936
 <span class="o">}</span>
 </code></pre>
-<p>API requests are made over HTTPS and authenticated with a Json Web Token (JWT). This JWT is supplied as the {token} in an HTTP Authorization header: Authorization: Bearer {token}</p>
+<p>API requests are made over HTTPS and authenticated with a OAuth 2.0 token. This OAuth token is supplied as the {token} in an HTTP Authorization header: Authorization: Bearer {token}.</p>
 
-<p>To get your JTW:</p>
-
-<ol>
-<li>Use our <code>https://api.smarterselect.com/v1/login</code> endpoint by entering your SS credentials.</li>
-<li>Get the token from the response body under <code>meta: {token: &#39;response_token&#39;}</code>.</li>
-<li>Your user information will be returned to you upon login.&quot;</li>
-</ol>
-
-<p>Set the HTTP Authorization header Authorization: Bearer {token} using your API key in place of {token}</p>
+<p>The previous endpoint returns the access token that you need in order to access the API. On the response body, use <code>access_token</code> as authentication from now on, on the Authorization: Bearer {access_token}.</p>
 
 <aside class="notice">
   Make sure you always send the  <code>Token</code> in each request.
 </aside>
-<h1 id='account'>Account</h1><h2 id='overview'>Overview</h2>
-<p>Those are all accounts related to your account.</p>
-<h2 id='get-all-accounts'>GET All Accounts</h2>
-<blockquote>
-<p>Example to get all accounts</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {token}'</span>
-</code></pre>
-<blockquote>
-<p>Response body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1245123"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"accounts"</span>,
-      <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"role"</span>: <span class="s2">"owner"</span>,
-        <span class="s2">"provider_name"</span>: <span class="s2">"Provider Name 1"</span>,
-        <span class="s2">"join_date"</span>: <span class="s2">"2019-01-21 13:32:10"</span>
-      <span class="o">}</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1245124"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"accounts"</span>,
-      <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"role"</span>: <span class="s2">"applicant"</span>,
-        <span class="s2">"provider_name"</span>: <span class="s2">"Provider Name 1"</span>,
-        <span class="s2">"join_date"</span>: <span class="s2">"2019-01-17 11:30:19"</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-<p>Take into consideration that the returned <code>id</code> is the one you must use to identify yourself as <code>owner</code> or <code>admin</code> in the different requests/actions.</p>
-<h3 id='description'>Description</h3>
-<p>Gets a list of all your accounts objects</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts</code></p>
-<h3 id='response'>Response</h3>
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th>Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>integer</td>
-      <td>auto-generated object identifier which is used to another requests</td>
-    </tr>
-    <tr>
-      <td><code>type</code></td>
-      <td>string</td>
-      <td>object type</td>
-    </tr>
-    <tr>
-      <td><code>attributes[role]</code></td>
-      <td>string</td>
-      <td>role in this provider</td>
-    </tr>
-    <tr>
-      <td><code>attributes[provider_name]</code></td>
-      <td>string</td>
-      <td>name of the provider related</td>
-    </tr>
-    <tr>
-      <td><code>attributes[join_date]</code></td>
-      <td>date</td>
-      <td>date where you were added to this account</td>
-    </tr>
-  </tbody>
-</table>
 <h1 id='users'>Users</h1><h2 id='overview'>Overview</h2>
-<p>Those are all users related to your account.</p>
+<p>These are all users related to your account.</p>
 <h2 id='get-all-users'>GET All Users</h2>
 <blockquote>
 <p>Example to get all account users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -495,58 +504,69 @@
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"626506"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123456"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user1@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User1"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"john+provider@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"John"</span>,
         <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 1"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2016-05-10 09:41:41"</span>,
-        <span class="s2">"last_login"</span>: null,
+        <span class="s2">"organization_name"</span>: null,
         <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
-        <span class="s2">"phone"</span>: <span class="s2">""</span>,
-        <span class="s2">"is_using_sso"</span>: <span class="nb">false</span>
+        <span class="s2">"phone"</span>: null,
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 14:24:32"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 16:37:25"</span>,
+        <span class="s2">"is_using_sso"</span>: null
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
     <span class="o">}</span>,
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1051342"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123457"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user2@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User2"</span>,
-        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 2"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2018-08-28 11:15:44"</span>,
-        <span class="s2">"last_login"</span>: <span class="s2">"2018-11-12 09:40:53"</span>,
-        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
-        <span class="s2">"phone"</span>: <span class="s2">"+1 (600) 123-1234"</span>,
-        <span class="s2">"is_using_sso"</span>: <span class="nb">false</span>
+        <span class="s2">"email"</span>: <span class="s2">"juan+evaluator@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Juan"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Perez"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: <span class="s2">""</span>,
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 15:23:09"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 15:24:17"</span>,
+        <span class="s2">"is_using_sso"</span>: null
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
     <span class="o">}</span>,
-  <span class="o">]</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"123458"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"email"</span>: <span class="s2">"jane+admin@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Jane"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: null,
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 17:01:55"</span>,
+        <span class="s2">"last_login"</span>: null,
+        <span class="s2">"is_using_sso"</span>: null
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 3
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h3 id='description'>Description</h3>
-<p>Gets a list of all your user objects</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users</code></p>
-<h3 id='path-arguments'>Path Arguments</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
+<p>Gets a list of all your users</p>
 <h3 id='response'>Response</h3>
 <table>
   <thead>
@@ -559,7 +579,7 @@
   <tbody>
     <tr>
       <td><code>id</code></td>
-      <td>integer</td>
+      <td>string</td>
       <td>auto-generated object identifier</td>
     </tr>
     <tr>
@@ -585,17 +605,7 @@
     <tr>
       <td><code>attributes[organization_name]</code></td>
       <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
+      <td>organization name that the user belongs to</td>
     </tr>
     <tr>
       <td><code>attributes[can_receive_sms]</code></td>
@@ -608,18 +618,43 @@
       <td>phone number of the user</td>
     </tr>
     <tr>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
+    </tr>
+    <tr>
       <td><code>attributes[is_using_sso]</code></td>
       <td>boolean</td>
       <td>is your account using sso configuration</td>
+    </tr>
+    <tr>
+      <td><code>links[apps]</code></td>
+      <td>string</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
     </tr>
   </tbody>
 </table>
 <h2 id='get-admins'>GET Admins</h2>
 <blockquote>
-<p>Example to get all account users</p>
+<p>Example to get all admin accounts</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/admins <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users/admins <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -628,60 +663,52 @@
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"626506"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123456"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user1@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User1"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"john+provider@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"John"</span>,
         <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 1"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2016-05-10 09:41:41"</span>,
-        <span class="s2">"last_login"</span>: null,
-        <span class="s2">"can-can_receive_sms-sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"organization_name"</span>: null,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
         <span class="s2">"phone"</span>: <span class="s2">""</span>,
-        <span class="s2">"owner"</span>: <span class="nb">false</span>,
-        <span class="s2">"active"</span>: <span class="nb">true</span>
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 14:24:32"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 16:37:25"</span>,
+        <span class="s2">"is_using_sso"</span>: null,
+        <span class="s2">"owner"</span>: <span class="nb">true</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
     <span class="o">}</span>,
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1051342"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123458"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user2@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User2"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"jane+admin@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Jane"</span>,
         <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 2"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2018-08-28 11:15:44"</span>,
-        <span class="s2">"last_login"</span>: <span class="s2">"2018-11-12 09:40:53"</span>,
-        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
-        <span class="s2">"phone"</span>: <span class="s2">"+1 (600) 123-1234"</span>,
-        <span class="s2">"owner"</span>: <span class="nb">true</span>,
-        <span class="s2">"active"</span>: <span class="nb">true</span>
+        <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: null,
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 17:01:55"</span>,
+        <span class="s2">"last_login"</span>: null,
+        <span class="s2">"is_using_sso"</span>: null,
+        <span class="s2">"owner"</span>: <span class="nb">false</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
-    <span class="o">}</span>,
-  <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 2
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h3 id='description-2'>Description</h3>
-<p>Gets a list of all your applicant users objects</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/admins</code></p>
-<h3 id='arguments'>Arguments</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
+<p>Gets a list of all your admins</p>
 <h3 id='response-2'>Response</h3>
 <table>
   <thead>
@@ -694,7 +721,7 @@
   <tbody>
     <tr>
       <td><code>id</code></td>
-      <td>integer</td>
+      <td>string</td>
       <td>auto-generated object identifier</td>
     </tr>
     <tr>
@@ -720,17 +747,7 @@
     <tr>
       <td><code>attributes[organization_name]</code></td>
       <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
+      <td>organization name that the user belongs to</td>
     </tr>
     <tr>
       <td><code>attributes[can_receive_sms]</code></td>
@@ -743,28 +760,48 @@
       <td>phone number of the user</td>
     </tr>
     <tr>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
+    </tr>
+    <tr>
       <td><code>attributes[is_using_sso]</code></td>
       <td>boolean</td>
       <td>is your account using sso configuration</td>
     </tr>
     <tr>
       <td><code>attributes[owner]</code></td>
-      <td>string</td>
+      <td>boolean</td>
       <td>if the user is owner or not in the giving account</td>
     </tr>
     <tr>
-      <td><code>attributes[active]</code></td>
+      <td><code>links[apps]</code></td>
       <td>string</td>
-      <td>if the user is active or not in the giving account</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
     </tr>
   </tbody>
 </table>
 <h2 id='get-applicants'>GET Applicants</h2>
 <blockquote>
-<p>Example to get all account users</p>
+<p>Example to get all applicant accounts</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/applicants <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users/applicants <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
@@ -773,64 +810,32 @@
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"626506"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123456"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user1@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User1"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"john+provider@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"John"</span>,
         <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 1"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2016-05-10 09:41:41"</span>,
-        <span class="s2">"last_login"</span>: null,
-        <span class="s2">"can-can_receive_sms-sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"organization_name"</span>: null,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
         <span class="s2">"phone"</span>: <span class="s2">""</span>,
-        <span class="s2">"apps_size"</span>: 2
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 14:24:32"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 16:37:25"</span>,
+        <span class="s2">"is_using_sso"</span>: null,
+        <span class="s2">"apps_size"</span>: 0
       <span class="o">}</span>,
       <span class="s2">"links"</span>: <span class="o">{</span>
-        <span class="s2">"apps"</span>: <span class="s2">"/provider/list_user_apps_provider/626506?provider_id=4164"</span>
+        <span class="s2">"apps"</span>: <span class="s2">"/provider/list_user_apps_provider/123456?provider_id=1234"</span>,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1051342"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
-      <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user2@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User2"</span>,
-        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 2"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2018-08-28 11:15:44"</span>,
-        <span class="s2">"last_login"</span>: <span class="s2">"2018-11-12 09:40:53"</span>,
-        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
-        <span class="s2">"phone"</span>: <span class="s2">"+1 (600) 123-1234"</span>,
-        <span class="s2">"apps_size"</span>: 9
-      <span class="o">}</span>,
-      <span class="s2">"links"</span>: <span class="o">{</span>
-        <span class="s2">"apps"</span>: <span class="s2">"/provider/list_user_apps_provider/1051342?provider_id=4164"</span>
-      <span class="o">}</span>
-    <span class="o">}</span>,
-  <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 1
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h3 id='description-3'>Description</h3>
 <p>Gets a list of all your applicant users objects</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/applicants</code></p>
-<h3 id='arguments-2'>Arguments</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>:account_id <strong class="required">required</strong></td>
-      <td>path parameter</td>
-      <td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-    </tr>
-  </tbody>
-</table>
 <h3 id='response-3'>Response</h3>
 <table>
   <thead>
@@ -843,7 +848,7 @@
   <tbody>
     <tr>
       <td><code>id</code></td>
-      <td>integer</td>
+      <td>string</td>
       <td>auto-generated object identifier</td>
     </tr>
     <tr>
@@ -869,17 +874,7 @@
     <tr>
       <td><code>attributes[organization_name]</code></td>
       <td>string</td>
-      <td>organization name of the user</td>
-    </tr>
-    <tr>
-      <td><code>attributes[created_on]</code></td>
-      <td>datetime</td>
-      <td>date and time when the user was created</td>
-    </tr>
-    <tr>
-      <td><code>attributes[last_login]</code></td>
-      <td>datetime</td>
-      <td>last login of the user into SmarterSelect</td>
+      <td>organization name that the user belongs to</td>
     </tr>
     <tr>
       <td><code>attributes[can_receive_sms]</code></td>
@@ -892,9 +887,14 @@
       <td>phone number of the user</td>
     </tr>
     <tr>
-      <td><code>attributes[apps_size]</code></td>
-      <td>integer</td>
-      <td>quantity of apps this user has in your account</td>
+      <td><code>attributes[created_on]</code></td>
+      <td>datetime</td>
+      <td>date and time when the user was created</td>
+    </tr>
+    <tr>
+      <td><code>attributes[last_login]</code></td>
+      <td>datetime</td>
+      <td>last login of the user into SmarterSelect</td>
     </tr>
     <tr>
       <td><code>attributes[is_using_sso]</code></td>
@@ -902,9 +902,24 @@
       <td>is your account using sso configuration</td>
     </tr>
     <tr>
+      <td><code>attributes[app_size]</code></td>
+      <td>integer</td>
+      <td>quantity of apps this user has in your account</td>
+    </tr>
+    <tr>
       <td><code>links[apps]</code></td>
       <td>string</td>
-      <td>link to access to the user apps</td>
+      <td>link to the applicants</td>
+    </tr>
+    <tr>
+      <td><code>links[evals]</code></td>
+      <td>string</td>
+      <td>link to the evaluators</td>
+    </tr>
+     <tr>
+      <td><code>meta[total]</code></td>
+      <td>integer</td>
+      <td>total amount of accounts</td>
     </tr>
   </tbody>
 </table>
@@ -913,89 +928,63 @@
 <p>Example to get all evaluator users</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users/evaluators <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span>
 </code></pre>
 <blockquote>
 <p>Response body</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<pre class="highlight shell tab-shell"><code><span class="o">{{</span>
   <span class="s2">"data"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"2123321"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123456"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user1@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User1"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"john+provider@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"John"</span>,
         <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 1"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2016-05-10 09:41:41"</span>,
-        <span class="s2">"last_login"</span>: null,
-        <span class="s2">"can-can_receive_sms-sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"organization_name"</span>: null,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
         <span class="s2">"phone"</span>: <span class="s2">""</span>,
-        <span class="s2">"evals_size"</span>: 2,
-        <span class="s2">"active"</span>: <span class="nb">false</span>
-      <span class="o">}</span>,
-      <span class="s2">"relationships"</span>: <span class="o">{</span>
-        <span class="s2">"eval_groups"</span>: <span class="o">{</span>
-          <span class="s2">"data"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-              <span class="s2">"id"</span>: <span class="s2">"321"</span>,
-              <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>
-            <span class="o">}</span>
-          <span class="o">]</span>
-        <span class="o">}</span>
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 14:24:32"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 16:37:25"</span>,
+        <span class="s2">"is_using_sso"</span>: null,
+        <span class="s2">"active"</span>: <span class="nb">true</span>,
+        <span class="s2">"evals_size"</span>: 0
       <span class="o">}</span>,
       <span class="s2">"links"</span>: <span class="o">{</span>
-        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/2123321?provider_id=4164"</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/123456?provider_id=1234"</span>
       <span class="o">}</span>
     <span class="o">}</span>,
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1232321"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"users"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123457"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"user2@gmail.com"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"User2"</span>,
-        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Organization 2"</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2018-08-28 11:15:44"</span>,
-        <span class="s2">"last_login"</span>: <span class="s2">"2018-11-12 09:40:53"</span>,
-        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
-        <span class="s2">"phone"</span>: <span class="s2">"+1 (600) 123-1234"</span>,
-        <span class="s2">"evals_size"</span>: 9,
-        <span class="s2">"active"</span>: <span class="nb">true</span>
-      <span class="o">}</span>,
-      <span class="s2">"relationships"</span>: <span class="o">{</span>
-        <span class="s2">"eval_groups"</span>: <span class="o">{</span>
-          <span class="s2">"data"</span>: <span class="o">[]</span>
-        <span class="o">}</span>
+        <span class="s2">"email"</span>: <span class="s2">"juan+evaluator@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Juan"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Perez"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+        <span class="s2">"phone"</span>: <span class="s2">""</span>,
+        <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 15:23:09"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 15:24:17"</span>,
+        <span class="s2">"is_using_sso"</span>: null,
+        <span class="s2">"active"</span>: <span class="nb">true</span>,
+        <span class="s2">"evals_size"</span>: 0
       <span class="o">}</span>,
       <span class="s2">"links"</span>: <span class="o">{</span>
-        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/1232321?provider_id=4164"</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: <span class="s2">"/provider/list_user_evals_provider/123457?provider_id=1234"</span>
       <span class="o">}</span>
-    <span class="o">}</span>,
-  <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 2
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h3 id='description-4'>Description</h3>
 <p>Gets a list of all your evaluator users objects</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/evaluators</code></p>
-<h3 id='arguments-3'>Arguments</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Location</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>:account_id <strong class="required">required</strong></td>
-<td>path parameter</td>
-<td>integer</td>
-<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-</tr>
-</tbody></table>
 <h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
@@ -1032,7 +1021,17 @@
 <tr>
 <td><code>attributes[organization_name]</code></td>
 <td>string</td>
-<td>organization name of the user.</td>
+<td>organization name that the user belongs to.</td>
+</tr>
+<tr>
+<td><code>attributes[can_receive_sms]</code></td>
+<td>boolean</td>
+<td>is user is able or not to receive sms.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>string</td>
+<td>phone number of the user.</td>
 </tr>
 <tr>
 <td><code>attributes[created_on]</code></td>
@@ -1045,11 +1044,6 @@
 <td>last login of the user into SmarterSelect.</td>
 </tr>
 <tr>
-<td><code>attributes[can_receive_sms]</code></td>
-<td>boolean</td>
-<td>is user is able or not to receive sms.</td>
-</tr>
-<tr>
 <td><code>attributes[is_using_sso]</code></td>
 <td>boolean</td>
 <td>is your account using sso configuration.</td>
@@ -1060,9 +1054,9 @@
 <td>quantity of evaluations this user has in your account.</td>
 </tr>
 <tr>
-<td><code>attributes[active]</code></td>
-<td>boolean</td>
-<td>if the user is active for this account.</td>
+<td><code>links[apps]</code></td>
+<td>string</td>
+<td>link to access to the user applicants.</td>
 </tr>
 <tr>
 <td><code>links[evals]</code></td>
@@ -1070,9 +1064,9 @@
 <td>link to access to the user evaluations.</td>
 </tr>
 <tr>
-<td><code>relationships[eval_groups]</code></td>
+<td><code>meta[total]</code></td>
 <td>object</td>
-<td>list all eval groups of this evaluator in this account.</td>
+<td>quantity of users retrieved.</td>
 </tr>
 </tbody></table>
 <h2 id='put-edit-user-role'>PUT Edit User Role</h2>
@@ -1080,7 +1074,7 @@
 <p>Example to promote/demote a user</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role <span class="se">\</span>
+  --url https://api.smarterselect.com//v1/admins/users/:id/role <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
@@ -1092,11 +1086,36 @@
 <p>Response body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>200 OK
+<span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: <span class="s2">"123457"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"user"</span>,
+    <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"juan+evaluator@smarterselect.com"</span>,
+      <span class="s2">"first_name"</span>: <span class="s2">"Juan"</span>,
+      <span class="s2">"last_name"</span>: <span class="s2">"Perez"</span>,
+      <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+      <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+      <span class="s2">"phone"</span>: <span class="s2">""</span>,
+      <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 15:23:09"</span>,
+      <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 15:24:17"</span>,
+      <span class="s2">"is_using_sso"</span>: null,
+      <span class="s2">"role"</span>: <span class="nb">true</span>
+    <span class="o">}</span>,
+    <span class="s2">"links"</span>: <span class="o">{</span>
+      <span class="s2">"apps"</span>: null,
+      <span class="s2">"evals"</span>: null
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 1
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='description-5'>Description</h3>
 <p>Promote or demote a user from your account list.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/role</code></p>
-<h3 id='arguments-4'>Arguments</h3>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/admins/users/:id/role</code></p>
+<h3 id='arguments'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1105,12 +1124,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>:account_id <strong class="required">required</strong></td>
-<td>path parameter</td>
-<td>integer</td>
-<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-</tr>
 <tr>
 <td>:user_id <strong class="required">required</strong></td>
 <td>path parameter</td>
@@ -1134,8 +1147,8 @@
 <blockquote>
 <p>Example to deactivate a user</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users/:id/deactivate <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
@@ -1146,11 +1159,37 @@
 <p>Response body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>200 OK
+
+<span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: <span class="s2">"123457"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"user"</span>,
+    <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"juan+evaluator@smarterselect.com"</span>,
+      <span class="s2">"first_name"</span>: <span class="s2">"Juan"</span>,
+      <span class="s2">"last_name"</span>: <span class="s2">"Perez"</span>,
+      <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+      <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+      <span class="s2">"phone"</span>: <span class="s2">""</span>,
+      <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 15:23:09"</span>,
+      <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 15:24:17"</span>,
+      <span class="s2">"is_using_sso"</span>: null,
+      <span class="s2">"role"</span>: <span class="nb">true</span>
+    <span class="o">}</span>,
+    <span class="s2">"links"</span>: <span class="o">{</span>
+      <span class="s2">"apps"</span>: null,
+      <span class="s2">"evals"</span>: null
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: null
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h3 id='description-6'>Description</h3>
 <p>Deactivate a user from your account list.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/users/:user_id/deactivate</code></p>
-<h3 id='arguments-5'>Arguments</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.smarterselect.com/v1/admins/users/:user_id/deactivate</code></p>
+<h3 id='arguments-2'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1159,12 +1198,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>:account_id <strong class="required">required</strong></td>
-<td>path parameter</td>
-<td>integer</td>
-<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
-</tr>
 <tr>
 <td>:user_id <strong class="required">required</strong></td>
 <td>path parameter</td>
@@ -1180,44 +1213,55 @@
 </tbody></table>
 
 <aside class="notice">
-  <code>Role</code> is required since a users can have multiple roles in your account.
+  <code>Role</code> is required since a user can have multiple roles in your account.
 </aside>
-<h1 id='eval-groups'>Eval Groups</h1><h2 id='overview'>Overview</h2>
-<p>Those are all evaluators groups related to your account.</p>
-<h2 id='get-eval-groups'>GET Eval Groups</h2>
+<h2 id='post-activate-user'>POST Activate User</h2>
 <blockquote>
-<p>Example to get all eval groups</p>
+<p>Example to activate a user</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {token}'</span>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/users/:id/activate <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "role": 1
+  }'</span>
 </code></pre>
 <blockquote>
 <p>Response body</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"data"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"1233"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
-      <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"name"</span>: <span class="s2">"My eval group 1"</span>
-      <span class="o">}</span>
+<pre class="highlight shell tab-shell"><code>200 OK
+
+<span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: <span class="s2">"123457"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"user"</span>,
+    <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"juan+evaluator@emarterselect.com"</span>,
+      <span class="s2">"first_name"</span>: <span class="s2">"Juan"</span>,
+      <span class="s2">"last_name"</span>: <span class="s2">"Perez"</span>,
+      <span class="s2">"organization_name"</span>: <span class="s2">"SmarterSelect"</span>,
+      <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
+      <span class="s2">"phone"</span>: <span class="s2">""</span>,
+      <span class="s2">"created_on"</span>: <span class="s2">"2019-10-03 15:23:09"</span>,
+      <span class="s2">"last_login"</span>: <span class="s2">"2019-10-03 15:24:17"</span>,
+      <span class="s2">"is_using_sso"</span>: null,
+      <span class="s2">"role"</span>: <span class="nb">true</span>
     <span class="o">}</span>,
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"4312"</span>,
-      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
-      <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"name"</span>: <span class="s2">"My Eval group 2"</span>
-      <span class="o">}</span>
+    <span class="s2">"links"</span>: <span class="o">{</span>
+      <span class="s2">"apps"</span>: null,
+      <span class="s2">"evals"</span>: null
     <span class="o">}</span>
-  <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: null
+  <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='description'>Description</h3>
-<p>Gets a list of all your eval groups objects</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups</code></p>
-<h3 id='arguments'>Arguments</h3>
+</code></pre><h3 id='description-7'>Description</h3>
+<p>Activate a user from your account list.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.smarterselect.com/v1/admins/users/:user_id/activate</code></p>
+<h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1227,12 +1271,55 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>:account_id <strong class="required">required</strong></td>
+<td>:user_id <strong class="required">required</strong></td>
 <td>path parameter</td>
 <td>integer</td>
-<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+<td>The user id is returned from any of the user lists.</td>
+</tr>
+<tr>
+<td>role <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td><ul><li>0 -&gt; Owner</li><li>1 -&gt; Admin</li><li>2 -&gt; Applicant</li><li>3 -&gt; Evaluator</li></ul></td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+  <code>Role</code> is required since a user can have multiple roles in your account.
+</aside>
+<h1 id='evaluator-groups'>Evaluator Groups</h1><h2 id='overview'>Overview</h2>
+<p>Those are all evaluators groups related to your account.</p>
+<h2 id='get-eval-groups'>GET Eval Groups</h2>
+<blockquote>
+<p>Example to get all eval groups</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/eval_groups <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"1234"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"My Eval Group 1"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"5678"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"eval_group"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"My Eval Group 2"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='description'>Description</h3>
+<p>Gets a list of all your eval groups objects</p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -1257,15 +1344,15 @@
 <td>name of the eval group.</td>
 </tr>
 </tbody></table>
-<h2 id='post-remove-users'>POST Remove Users</h2>
+<h2 id='post-remove-users-from-eval-group'>POST Remove Users From Eval Group</h2>
 <blockquote>
 <p>Example to remove list of users from an eval group</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {token}'</span>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/eval_groups/:eval_group_id/remove_users <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
   --data <span class="s1">'{
-    "user_ids": [982091]
+    "user_ids": [123458]
   }'</span>
 </code></pre>
 <blockquote>
@@ -1274,26 +1361,137 @@
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"id"</span>: <span class="s2">"982091"</span>,
+      <span class="s2">"id"</span>: <span class="s2">"123458"</span>,
       <span class="s2">"type"</span>: <span class="s2">"user"</span>,
       <span class="s2">"attributes"</span>: <span class="o">{</span>
-        <span class="s2">"email"</span>: <span class="s2">"evalautor@email.io"</span>,
-        <span class="s2">"first_name"</span>: <span class="s2">"Evalautor Name"</span>,
-        <span class="s2">"last_name"</span>: <span class="s2">"Evaluator Last Name"</span>,
-        <span class="s2">"organization_name"</span>: <span class="s2">"Eval. Org."</span>,
-        <span class="s2">"can_receive_sms"</span>: <span class="nb">false</span>,
-        <span class="s2">"phone"</span>: <span class="s2">""</span>,
-        <span class="s2">"created_on"</span>: <span class="s2">"2018-03-01 15:07:43"</span>,
-        <span class="s2">"last_login"</span>: <span class="s2">"2018-04-09 11:25:41"</span>,
-        <span class="s2">"is_using_sso"</span>: <span class="nb">false</span>
+        <span class="s2">"email"</span>: <span class="s2">"jane+admin@smarterselect.com"</span>,
+        <span class="s2">"first_name"</span>: <span class="s2">"Jane"</span>,
+        <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
+        <span class="s2">"organization_name"</span>: <span class="s2">"Smarter Select"</span>,
+        <span class="s2">"can_receive_sms"</span>: <span class="nb">true</span>,
+        <span class="s2">"phone"</span>: null,
+        <span class="s2">"created_on"</span>: <span class="s2">"2012-01-28 13:07:11"</span>,
+        <span class="s2">"last_login"</span>: <span class="s2">"2019-05-29 11:08:05"</span>,
+        <span class="s2">"is_using_sso"</span>: <span class="nb">true</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"apps"</span>: null,
+        <span class="s2">"evals"</span>: null
       <span class="o">}</span>
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre><h3 id='description-2'>Description</h3>
 <p>Remove a list of user from a given eval group</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/admins/eval_groups/:eval_group_id/remove_users</code></p>
+<h3 id='arguments'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:eval_group_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>ID of the Eval Group where you want to remove a user.</td>
+</tr>
+<tr>
+<td>user_ids <strong class="required">required</strong></td>
+<td>body content</td>
+<td>array of integers</td>
+<td>Users ids to remove from given eval group.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>It returns all removed users basic data, refer object to <a href="#get-all-users">users endpoint</a></p>
+<h1 id='views'>Views</h1><h2 id='overview'>Overview</h2>
+<p>Endpoints related to the views created on your account. You can check all of the them, create a new one (POST), update it (PUT, PATCH) or delete it (DELETE).</p>
+<h2 id='post-create-view-on-your-account'>POST Create View on your Account</h2>
+<blockquote>
+<p>Example to create a view in your account.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/views <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "name": "test view",
+    "type": "View::App",
+    "user_id": 123456,
+    "program_id": 12586
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>201 Created
+</code></pre><h3 id='description'>Description</h3>
+<p>Create a new view in your account.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.smarterselect.com/v1/admins/views</code></p>
+<h3 id='arguments'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name <strong class="required">required</strong></td>
+<td>body content</td>
+<td>string</td>
+<td>name of the view</td>
+</tr>
+<tr>
+<td>type <strong class="required">required</strong></td>
+<td>body content</td>
+<td>string</td>
+<td>type of the new view. The type MUST exists.</td>
+</tr>
+<tr>
+<td>user_id <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td>user that will have the new view</td>
+</tr>
+<tr>
+<td>program_id <strong class="required">required</strong></td>
+<td>body content</td>
+<td>integer</td>
+<td>program that will have the new view</td>
+</tr>
+</tbody></table>
+<h2 id='put-patch-update-view-on-your-account'>PUT/PATCH Update View on your Account</h2>
+<blockquote>
+<p>Example to update a view in your account.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request <span class="o">{</span> PUT | PATCH <span class="o">}</span> <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/views/:id <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "name": "test view",
+    "type": "View::App",
+    "user_id": 123456,
+    "program_id": 12586
+  }'</span>
+
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>201 Created
+</code></pre><h3 id='description-2'>Description</h3>
+<p>Update a view given the ID.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.smarterselect.com/v1/accounts/:account_id/eval_groups/:eval_group_id/remove_users</code></p>
+<p><code>{ PUT | PATCH } https://api.smarterselect.com/v1/admins/views/:view_id</code></p>
 <h3 id='arguments-2'>Arguments</h3>
 <table><thead>
 <tr>
@@ -1304,20 +1502,524 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>:account_id <strong class="required">required</strong></td>
+<td>:view_id <strong class="required">required</strong></td>
 <td>path parameter</td>
 <td>integer</td>
-<td>The account ID got it from <a href="#account">accounts endpoint</a></td>
+<td>id of the view that will be modified.</td>
 </tr>
 <tr>
-<td>:user_ids <strong class="required">required</strong></td>
-<td>body content</td>
-<td>array of integers</td>
-<td>Users ids to remove from given eval group.</td>
+<td>{name</td>
+<td>type</td>
+<td>user_id</td>
+<td>program_id}</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
-<p>It returns all removed users basic data, refer object to <a href="#get-all-users">users endpoint</a></p>
+<h2 id='delete-delete-view-on-your-account'>DELETE Delete View on your Account</h2>
+<blockquote>
+<p>Example to delete a view in your account.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/views <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>201 Created
+</code></pre><h3 id='description-3'>Description</h3>
+<p>Delete a new view in your account.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE https://api.smarterselect.com/v1/admins/views:view_id</code></p>
+<h3 id='arguments-3'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:view_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>id of the view that will be modified.</td>
+</tr>
+</tbody></table>
+<h1 id='programs'>Programs</h1><h2 id='overview'>Overview</h2>
+<p>Retrieve all the information regarding the programs that you created.</p>
+<h2 id='get-all-programs'>GET All Programs</h2>
+<blockquote>
+<p>Example to get all the programs.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/providers/:provider_id/programs<span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"id"</span>: 12556,
+    <span class="s2">"provider_id"</span>: 1234,
+    <span class="s2">"name"</span>: <span class="s2">"Common Program 1"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"This is a common program "</span>,
+    <span class="s2">"deadline"</span>: <span class="s2">"2019-08-25T23:00:00.000Z"</span>,
+    <span class="s2">"active"</span>: <span class="nb">true</span>,
+    <span class="s2">"created_on"</span>: <span class="s2">"2018-11-09T21:18:31.023Z"</span>,
+    <span class="s2">"updated_on"</span>: <span class="s2">"2018-11-09T21:18:36.558Z"</span>,
+    <span class="s2">"checklist_id"</span>: 12568,
+    <span class="s2">"logo"</span>: <span class="s2">"smarterselect_logo.jpg"</span>,
+    <span class="s2">"background_color"</span>: null,
+    <span class="s2">"font_color"</span>: null,
+    <span class="s2">"font_family"</span>: null,
+    <span class="s2">"normal_font_size"</span>: null,
+    <span class="s2">"custom_css"</span>: null,
+    <span class="s2">"award_amount"</span>: <span class="s2">"500.0"</span>,
+    <span class="s2">"number_of_awards"</span>: 5,
+    <span class="s2">"total_amount"</span>: <span class="s2">"2500.0"</span>,
+    <span class="s2">"renewable"</span>: <span class="nb">true</span>,
+    <span class="s2">"requirements"</span>: <span class="s2">"These are the common program's requirements"</span>,
+    <span class="s2">"info_email"</span>: <span class="s2">"john+provider@smarterselect.com"</span>,
+    <span class="s2">"contact_name"</span>: <span class="s2">"John Doe"</span>,
+    <span class="s2">"common"</span>: <span class="nb">true</span>,
+    <span class="s2">"common_scholarship_id"</span>: null,
+    <span class="s2">"recommender_deadline"</span>: <span class="s2">"2019-09-08T23:00:00.000Z"</span>,
+    <span class="s2">"evaluator_deadline"</span>: <span class="s2">"2019-09-26T00:00:00.000Z"</span>,
+    <span class="s2">"sds"</span>: <span class="nb">true</span>,
+    <span class="s2">"facebook_url"</span>: <span class="s2">""</span>,
+    <span class="s2">"evaluation_anonymous"</span>: <span class="nb">true</span>,
+    <span class="s2">"autologin_enabled"</span>: null,
+    <span class="s2">"security_key"</span>: null,
+    <span class="s2">"assign_to_evaluator"</span>: <span class="nb">false</span>,
+    <span class="s2">"filter_evaluator_email"</span>: <span class="nb">false</span>,
+    <span class="s2">"evaluator_email_filter"</span>: null,
+    <span class="s2">"short_description"</span>: <span class="s2">"program short description "</span>,
+    <span class="s2">"matching_configured"</span>: null,
+    <span class="s2">"disable_application_preview"</span>: <span class="nb">false</span>,
+    <span class="s2">"allow_multiple_applications_per_user"</span>: <span class="nb">true</span>,
+    <span class="s2">"lock_after_submit"</span>: <span class="nb">true</span>,
+    <span class="s2">"controlled_app"</span>: <span class="nb">false</span>,
+    <span class="s2">"notification_on_submission"</span>: <span class="nb">true</span>,
+    <span class="s2">"controlled_app_minutes"</span>: 0,
+    <span class="s2">"display_program_info_if_inactive"</span>: <span class="nb">false</span>,
+    <span class="s2">"public"</span>: <span class="nb">false</span>,
+    <span class="s2">"hide_facebook_sharing"</span>: <span class="nb">true</span>,
+    <span class="s2">"view_after_deadline"</span>: <span class="nb">false</span>,
+    <span class="s2">"survey_app"</span>: <span class="nb">false</span>,
+    <span class="s2">"redirect_url"</span>: <span class="s2">"www.google.com"</span>,
+    <span class="s2">"confirmation_text"</span>: <span class="s2">"Thank you for applying. Have a nice one!"</span>,
+    <span class="s2">"evaluation_db_search"</span>: <span class="nb">false</span>,
+    <span class="s2">"hide_for_apps_table"</span>: <span class="nb">false</span>,
+    <span class="s2">"single_sign_on"</span>: <span class="nb">false</span>,
+    <span class="s2">"nickname"</span>: <span class="s2">"Common app "</span>,
+    <span class="s2">"short_url"</span>: <span class="s2">"https://goo.gl/link"</span>,
+    <span class="s2">"sms"</span>: <span class="nb">true</span>,
+    <span class="s2">"redirect_logout_uri"</span>: <span class="s2">""</span>,
+    <span class="s2">"eval_share_notes"</span>: <span class="nb">true</span>,
+    <span class="s2">"program_cycle_id"</span>: 100,
+    <span class="s2">"use_contact_info"</span>: <span class="nb">false</span>,
+    <span class="s2">"contact_address"</span>: <span class="s2">"Somewhere"</span>,
+    <span class="s2">"contact_city"</span>: <span class="s2">"Some City"</span>,
+    <span class="s2">"contact_state"</span>: <span class="s2">"AL"</span>,
+    <span class="s2">"contact_zip_code"</span>: <span class="s2">"2000"</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h3 id='description'>Description</h3>
+<p>Get a List for all the programs asociated to the account</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/providers/:provider_id/programs</code></p>
+<h3 id='arguments'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:provider_id <strong class="required">required</strong></td>
+<td>path parameter</td>
+<td>integer</td>
+<td>ID of the Provider that wants to check the information.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>auto-generated object identifier.</td>
+</tr>
+<tr>
+<td><code>provider_id</code></td>
+<td>integer</td>
+<td>provider ID that requested for the programs.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>name of the program</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>description of the program</td>
+</tr>
+<tr>
+<td><code>deadline</code></td>
+<td>datetime</td>
+<td>final date that if set to fill up the program</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>boolean</td>
+<td>if the program is active</td>
+</tr>
+<tr>
+<td><code>created_on</code></td>
+<td>datetime</td>
+<td>when the program was created</td>
+</tr>
+<tr>
+<td><code>updated_on</code></td>
+<td>datetime</td>
+<td>last time that some changed was made on the program</td>
+</tr>
+<tr>
+<td><code>checklist_id</code></td>
+<td>integer</td>
+<td>ID for the checklist</td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td>string</td>
+<td>name of the file for the logo</td>
+</tr>
+<tr>
+<td><code>background_color</code></td>
+<td>string</td>
+<td>color of the background</td>
+</tr>
+<tr>
+<td><code>font_color</code></td>
+<td>string</td>
+<td>color of the font</td>
+</tr>
+<tr>
+<td><code>font_family</code></td>
+<td>string</td>
+<td>font family</td>
+</tr>
+<tr>
+<td><code>normal_font_size</code></td>
+<td>string</td>
+<td>normal font size</td>
+</tr>
+<tr>
+<td><code>custom_css</code></td>
+<td>string</td>
+<td>custom css if has</td>
+</tr>
+<tr>
+<td><code>award_amount</code></td>
+<td>string</td>
+<td>quantity for the award</td>
+</tr>
+<tr>
+<td><code>number_of_awards</code></td>
+<td>integer</td>
+<td>total number of awards</td>
+</tr>
+<tr>
+<td><code>total_amount</code></td>
+<td>string</td>
+<td>total amount for all the awards</td>
+</tr>
+<tr>
+<td><code>renewable</code></td>
+<td>boolean</td>
+<td>if the program is renewable</td>
+</tr>
+<tr>
+<td><code>requirements</code></td>
+<td>string</td>
+<td>requirements for the program</td>
+</tr>
+<tr>
+<td><code>info_email</code></td>
+<td>string</td>
+<td>info email of the program</td>
+</tr>
+<tr>
+<td><code>contact_name</code></td>
+<td>string</td>
+<td>name of the contact</td>
+</tr>
+<tr>
+<td><code>common</code></td>
+<td>boolean</td>
+<td>if the program is common</td>
+</tr>
+<tr>
+<td><code>common_scholarship_id</code></td>
+<td>string</td>
+<td>null</td>
+</tr>
+<tr>
+<td><code>recommender_deadline</code></td>
+<td>string</td>
+<td>XXXXX</td>
+</tr>
+<tr>
+<td><code>evaluator_deadline</code></td>
+<td>string</td>
+<td>XXXXXX</td>
+</tr>
+<tr>
+<td><code>sds</code></td>
+<td>boolean</td>
+<td>XXXXXX</td>
+</tr>
+<tr>
+<td><code>facebook_url</code></td>
+<td>string</td>
+<td>url for this program on facebook</td>
+</tr>
+<tr>
+<td><code>evaluation_anonymous</code></td>
+<td>boolean</td>
+<td>if the evaluation if anonymous</td>
+</tr>
+<tr>
+<td><code>autologin_enabled</code></td>
+<td>string</td>
+<td>if autologin is enabled</td>
+</tr>
+<tr>
+<td><code>security_key</code></td>
+<td>string</td>
+<td>security key</td>
+</tr>
+<tr>
+<td><code>assign_to_evaluator</code></td>
+<td>boolean</td>
+<td>if is assigned to an evaluator</td>
+</tr>
+<tr>
+<td><code>filter_evaluator_email</code></td>
+<td>boolean</td>
+<td>if can filter evaluator email</td>
+</tr>
+<tr>
+<td><code>evaluator_email_filter</code></td>
+<td>string</td>
+<td>the filter applied to the email</td>
+</tr>
+<tr>
+<td><code>short_description</code></td>
+<td>string</td>
+<td>short description</td>
+</tr>
+<tr>
+<td><code>matching_configured</code></td>
+<td>string</td>
+<td>the matching configuration</td>
+</tr>
+<tr>
+<td><code>disable_application_preview</code></td>
+<td>boolean</td>
+<td>if application preview should be disabled.</td>
+</tr>
+<tr>
+<td><code>allow_multiple_applications_per_user</code></td>
+<td>boolean</td>
+<td>if multiple users can apply</td>
+</tr>
+<tr>
+<td><code>lock_after_submit</code></td>
+<td>boolean</td>
+<td>if this program should be locked after is submitted</td>
+</tr>
+<tr>
+<td><code>controlled_app</code></td>
+<td>boolean</td>
+<td>if is an controlled app</td>
+</tr>
+<tr>
+<td><code>notification_on_submission</code></td>
+<td>boolean</td>
+<td>if is notificated to the user after submission</td>
+</tr>
+<tr>
+<td><code>controlled_app_minutes</code></td>
+<td>integer</td>
+<td>minutes for controlled app</td>
+</tr>
+<tr>
+<td><code>display_program_info_if_inactive</code></td>
+<td>string</td>
+<td>displayed information</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>boolean</td>
+<td>if this program is public</td>
+</tr>
+<tr>
+<td><code>hide_facebook_sharing</code></td>
+<td>boolean</td>
+<td>if facebook sharing should be hidden</td>
+</tr>
+<tr>
+<td><code>view_after_deadline</code></td>
+<td>boolean</td>
+<td>if can be displayed after the deadline</td>
+</tr>
+<tr>
+<td><code>survey_app</code></td>
+<td>boolean</td>
+<td>if is an survey app</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td>string</td>
+<td>link to redirect</td>
+</tr>
+<tr>
+<td><code>confirmation_text</code></td>
+<td>string</td>
+<td>Text displayed after confirmation</td>
+</tr>
+<tr>
+<td><code>evaluation_db_search</code></td>
+<td>boolean</td>
+<td>search on database</td>
+</tr>
+<tr>
+<td><code>hide_for_apps_table</code></td>
+<td>boolean</td>
+<td>if this should be showed on table</td>
+</tr>
+<tr>
+<td><code>single_sign_on</code></td>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>nickname</code></td>
+<td>string</td>
+<td>nickname of the program</td>
+</tr>
+<tr>
+<td><code>short_url</code></td>
+<td>string</td>
+<td>shorter URL meant to share</td>
+</tr>
+<tr>
+<td><code>sms</code></td>
+<td>boolean</td>
+<td>if can send SMS</td>
+</tr>
+<tr>
+<td><code>redirect_logout_uri</code></td>
+<td>string</td>
+<td>URI to redirect after logout</td>
+</tr>
+<tr>
+<td><code>eval_share_notes</code></td>
+<td>boolean</td>
+<td>notes of the sharing</td>
+</tr>
+<tr>
+<td><code>program_cycle_id</code></td>
+<td>string</td>
+<td>id of the program cycle</td>
+</tr>
+<tr>
+<td><code>use_contact_info</code></td>
+<td>boolean</td>
+<td>if contact info can be used</td>
+</tr>
+<tr>
+<td><code>contact_address</code></td>
+<td>string</td>
+<td>Address of the contact</td>
+</tr>
+<tr>
+<td><code>contact_city</code></td>
+<td>string</td>
+<td>city of the contact</td>
+</tr>
+<tr>
+<td><code>contact_state</code></td>
+<td>string</td>
+<td>state of the contact</td>
+</tr>
+<tr>
+<td><code>contact_zip_code</code></td>
+<td>string</td>
+<td>zip code of the contact</td>
+</tr>
+</tbody></table>
+<h1 id='users-as-superadmin'>Users as SuperAdmin</h1><h2 id='overview'>Overview</h2>
+<p>These are all the users registered.</p>
+
+<aside class="notice">
+    You need Super Admin permissions to access this information.
+</aside>
+<h2 id='get-all-users-as-superadmin'>GET All Users as SuperAdmin</h2>
+<blockquote>
+<p>Example to get all users</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/users <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">[</span>
+    1,
+    2,
+    3
+<span class="o">]</span>
+</code></pre><h3 id='description'>Description</h3>
+<p>Gets a list of all the registered users</p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>array of integers</td>
+<td>id of the users registered</td>
+</tr>
+</tbody></table>
+<h2 id='delete-specific-user-as-superadmin'>DELETE Specific User as SuperAdmin</h2>
+<blockquote>
+<p>Example to delete one user given the ID</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/users/:user_id <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span>
+</code></pre>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>200 OK
+</code></pre><h3 id='description-2'>Description</h3>
+<p>Deletes an specific user given the ID</p>
 
       </div>
       <div class="dark-box">
