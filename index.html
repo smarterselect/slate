@@ -326,13 +326,22 @@
                       <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
+                      <a href="#get-retrieve-view-on-your-account" class="toc-h2 toc-link" data-title="GET Retrieve View on your Account">
+                        <span class="item-label get" style="top: -1px;width: 33px;">GET</span>
+                        Retrieve View on your Account
+                      </a>
+                  </li>
+                  <li>
                       <a href="#post-create-view-on-your-account" class="toc-h2 toc-link" data-title="POST Create View on your Account">
                         <span class="item-label post" style="top: -1px;width: 33px;">POST</span>
                         Create View on your Account
                       </a>
                   </li>
                   <li>
-                      <a href="#put-patch-update-view-on-your-account" class="toc-h2 toc-link" data-title="PUT/PATCH Update View on your Account">PUT/PATCH Update View on your Account</a>
+                      <a href="#put-patch-update-view-on-your-account" class="toc-h2 toc-link" data-title="PUT / PATCH Update View on your Account">
+                        <span class="item-label put" style="top: -1px;width: 33px;">PUT</span>
+                        / PATCH Update View on your Account
+                      </a>
                   </li>
                   <li>
                       <a href="#delete-delete-view-on-your-account" class="toc-h2 toc-link" data-title="DELETE Delete View on your Account">
@@ -1411,6 +1420,228 @@
 <p>It returns all removed users basic data, refer object to <a href="#get-all-users">users endpoint</a></p>
 <h1 id='views'>Views</h1><h2 id='overview'>Overview</h2>
 <p>Endpoints related to the views created on your account. You can check all of the them, create a new one (POST), update it (PUT, PATCH) or delete it (DELETE).</p>
+<h2 id='get-retrieve-view-on-your-account'>GET Retrieve View on your Account</h2>
+<blockquote>
+<p>Example to retrieve all the views in your Account, including the ones by default.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.smarterselect.com/v1/admins/views <span class="se">\</span>
+  --header <span class="s1">'authorization: Bearer {token}'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"10"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"view"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Today's Applications"</span>,
+        <span class="s2">"default"</span>: <span class="nb">true</span>,
+        <span class="s2">"favorite"</span>: null,
+        <span class="s2">"program_id"</span>: null,
+        <span class="s2">"user_id"</span>: null,
+        <span class="s2">"created_at"</span>: <span class="s2">"2019-10-08T22:19:17.051Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2019-10-08T22:19:17.051Z"</span>
+      <span class="o">}</span>,
+      <span class="s2">"relationships"</span>: <span class="o">{</span>
+        <span class="s2">"filters"</span>: <span class="o">{}</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"self"</span>: <span class="s2">"https://api.smarterselect.com/v1/admins/views/10"</span>,
+        <span class="s2">"filters"</span>: <span class="s2">"https://api.smarterselect.com/v1/admins/views/10"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"included"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"1"</span>,
+      <span class="s2">"type"</span>: <span class="s2">"filter"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"db_name"</span>: <span class="s2">"apps.created_on"</span>,
+        <span class="s2">"values"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"id"</span>: <span class="s2">"2"</span>,
+            <span class="s2">"type"</span>: <span class="s2">"filter_value"</span>,
+            <span class="s2">"attributes"</span>: <span class="o">{</span>
+              <span class="s2">"value"</span>: <span class="s2">"now()"</span>,
+              <span class="s2">"comparison"</span>: <span class="s2">"="</span>,
+              <span class="s2">"created_at"</span>: <span class="s2">"2019-10-09T16:41:23.460Z"</span>,
+              <span class="s2">"updated_at"</span>: <span class="s2">"2019-10-09T22:41:20.489Z"</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"created_at"</span>: <span class="s2">"2019-10-09T16:29:35.773Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2019-10-09T16:29:35.773Z"</span>
+      <span class="o">}</span>,
+      <span class="s2">"links"</span>: <span class="o">{</span>
+        <span class="s2">"self"</span>: <span class="s2">"https://staging.api.smarterselect.com/v1/admins/views/10.1"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"total"</span>: 1
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='description'>Description</h3>
+<p>Get the information for the View on your account, including default, and shows the information of the filters applied to it.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.smarterselect.com/v1/admins/views</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Record</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>view</td>
+<td>integer</td>
+<td>auto-generated object identifier of the view</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>view</td>
+<td>string</td>
+<td>type of this object.</td>
+</tr>
+<tr>
+<td><code>atributes[name]</code></td>
+<td>view</td>
+<td>string</td>
+<td>name given to the view</td>
+</tr>
+<tr>
+<td><code>atributes[default]</code></td>
+<td>view</td>
+<td>boolean</td>
+<td>if this view is a default one</td>
+</tr>
+<tr>
+<td><code>attributes[favorite]</code></td>
+<td>view</td>
+<td>boolean</td>
+<td>if this view is a favorite</td>
+</tr>
+<tr>
+<td><code>atributes[program_id]</code></td>
+<td>view</td>
+<td>integer</td>
+<td>if the view a program where it should act. If the view is default, then this attribute is null</td>
+</tr>
+<tr>
+<td><code>atributes[user_id]</code></td>
+<td>view</td>
+<td>integer</td>
+<td>id of the user that is owner. If the view is default doesn&#39;t have an owner</td>
+</tr>
+<tr>
+<td><code>atributes[created_at]</code></td>
+<td>view</td>
+<td>datetime</td>
+<td>when this view was created</td>
+</tr>
+<tr>
+<td><code>atributes[updated_at]</code></td>
+<td>view</td>
+<td>datetime</td>
+<td>last time it was updated</td>
+</tr>
+<tr>
+<td><code>relationships[filters]</code></td>
+<td>view</td>
+<td>string</td>
+<td>relations to other filters</td>
+</tr>
+<tr>
+<td><code>links[self]</code></td>
+<td>view</td>
+<td>string</td>
+<td>link to this view</td>
+</tr>
+<tr>
+<td><code>links[filters]</code></td>
+<td>view</td>
+<td>string</td>
+<td>link to this view&#39;s filters</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>filter</td>
+<td>string</td>
+<td>auto-generated object identifier of the filter</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>filter</td>
+<td>string</td>
+<td>type of the object, filter</td>
+</tr>
+<tr>
+<td><code>atributes[db_name]</code></td>
+<td>filter</td>
+<td>string</td>
+<td>attribute of the table that will be used for filtering</td>
+</tr>
+<tr>
+<td><code>id]</code></td>
+<td>filter[filter_value]</td>
+<td>string</td>
+<td>auto-generated object identifier of the filter_value</td>
+</tr>
+<tr>
+<td><code>type]</codd></td>
+<td>filter[filter_value]</td>
+<td>string</td>
+<td>type of the object, filter_value</td>
+</tr>
+<tr>
+<td><code>value]</code></td>
+<td>filter[filter_value]</td>
+<td>string</td>
+<td>data that will be used to compare</td>
+</tr>
+<tr>
+<td><code>comparison</code></td>
+<td>filter[filter_value]</td>
+<td>string</td>
+<td>operator that will be used to compare</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>filter[filter_value]</td>
+<td>datetime</td>
+<td>datetime when this filter_value was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>filter[filter_value]</td>
+<td>datetime</td>
+<td>datetime when this filter_value was updated</td>
+</tr>
+<tr>
+<td><code>atributes[created_at]</code></td>
+<td>filter</td>
+<td>string</td>
+<td>datetime when this filter was created</td>
+</tr>
+<tr>
+<td><code>atributes[updated_at]</code></td>
+<td>filter</td>
+<td>string</td>
+<td>datetime when this filter was updated</td>
+</tr>
+<tr>
+<td><code>links[self]</code></td>
+<td>filter</td>
+<td>string</td>
+<td>link to this filter_value</td>
+</tr>
+</tbody></table>
 <h2 id='post-create-view-on-your-account'>POST Create View on your Account</h2>
 <blockquote>
 <p>Example to create a view in your account.</p>
@@ -1424,15 +1655,17 @@
     "type": "View::App",
     "user_id": 123456,
     "program_id": 12586
+    "favorite": true,
+    "default": false
   }'</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>201 Created
-</code></pre><h3 id='description'>Description</h3>
+</code></pre><h3 id='description-2'>Description</h3>
 <p>Create a new view in your account.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.smarterselect.com/v1/admins/views</code></p>
 <h3 id='arguments'>Arguments</h3>
 <table><thead>
@@ -1444,33 +1677,45 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>name <strong class="required">required</strong></td>
+<td><code>name</code> <strong class="required">required</strong></td>
 <td>body content</td>
 <td>string</td>
 <td>name of the view</td>
 </tr>
 <tr>
-<td>type <strong class="required">required</strong></td>
+<td><code>type</code> <strong class="required">required</strong></td>
 <td>body content</td>
 <td>string</td>
-<td>type of the new view. The type MUST exists.</td>
+<td>type of the new view. The type MUST exists</td>
 </tr>
 <tr>
-<td>user_id <strong class="required">required</strong></td>
+<td><code>user_id</code></td>
 <td>body content</td>
 <td>integer</td>
 <td>user that will have the new view</td>
 </tr>
 <tr>
-<td>program_id <strong class="required">required</strong></td>
+<td><code>program_id</code></td>
 <td>body content</td>
 <td>integer</td>
-<td>program that will have the new view</td>
+<td>program that will have the new view.</td>
+</tr>
+<tr>
+<td><code>favorite</code></td>
+<td>body content</td>
+<td>boolean</td>
+<td>if this view will be favorite</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>body content</td>
+<td>integer</td>
+<td>if this view is default. If <code>program_id</code> is null, then default should be set to true.</td>
 </tr>
 </tbody></table>
-<h2 id='put-patch-update-view-on-your-account'>PUT/PATCH Update View on your Account</h2>
+<h2 id='put-patch-update-view-on-your-account'>PUT / PATCH Update View on your Account</h2>
 <blockquote>
-<p>Example to update a view in your account.</p>
+<p>Example to update a view in your account. You can use <code>PUT</code> for a complete update, or <code>PATCH</code> for small changes.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request <span class="o">{</span> PUT | PATCH <span class="o">}</span> <span class="se">\</span>
   --url https://api.smarterselect.com/v1/admins/views/:id <span class="se">\</span>
@@ -1480,7 +1725,9 @@
     "name": "test view",
     "type": "View::App",
     "user_id": 123456,
-    "program_id": 12586
+    "program_id": 12586,
+    "favorite": false,
+    "default": false
   }'</span>
 
 </code></pre>
@@ -1488,9 +1735,9 @@
 <p>Response</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>201 Created
-</code></pre><h3 id='description-2'>Description</h3>
+</code></pre><h3 id='description-3'>Description</h3>
 <p>Update a view given the ID.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>{ PUT | PATCH } https://api.smarterselect.com/v1/admins/views/:view_id</code></p>
 <h3 id='arguments-2'>Arguments</h3>
 <table><thead>
@@ -1526,9 +1773,9 @@
 <p>Response</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>201 Created
-</code></pre><h3 id='description-3'>Description</h3>
+</code></pre><h3 id='description-4'>Description</h3>
 <p>Delete a new view in your account.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://api.smarterselect.com/v1/admins/views:view_id</code></p>
 <h3 id='arguments-3'>Arguments</h3>
 <table><thead>
